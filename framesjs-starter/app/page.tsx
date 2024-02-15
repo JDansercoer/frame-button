@@ -1,121 +1,62 @@
 import * as fs from "fs";
 import { join } from "path";
+import { Account } from "starknet";
+import { addSeconds, differenceInSeconds, fromUnixTime } from "date-fns";
 import {
   FrameButton,
   FrameContainer,
   FrameImage,
-  FrameInput,
   FrameReducer,
   NextServerPageProps,
+  getFrameMessage,
   getPreviousFrame,
   useFramesReducer,
-  getFrameMessage,
+  validateActionSignature,
 } from "frames.js/next/server";
-import Link from "next/link";
 import { DEBUG_HUB_OPTIONS } from "./debug/constants";
-
-import { Account } from "starknet";
-import {
-  attack,
-  check_beast,
-  check_player,
-  dojoProvider,
-  enter_the_mist,
-  fetchLeaderAndBeasts,
-  spawn,
-} from "./provider";
+import { DojoProvider } from "@dojoengine/core";
+import { getUserDataForFid } from "frames.js";
 import { dojoConfig } from "../dojoConfig";
 
-import { GameData } from "./GameData";
-import { getUserDataForFid } from "frames.js";
-
-import { VT323 as GoogleVT323 } from "next/font/google";
-import {
-  ViewNames,
-  frameBoyViews,
-  viewNames,
-} from "./pages/season-two/frameboy";
-import { onload, state as getState, input } from "./pages/season-two/provider";
-import type { InferGetServerSidePropsType, GetServerSideProps } from "next";
-const googleVT323 = GoogleVT323({
-  subsets: ["latin"],
-  weight: "400",
-  variable: "--font-VT323",
-});
+export const dojoProvider = new DojoProvider(
+  dojoConfig.manifest,
+  dojoConfig.rpcUrl
+);
 
 const VT323 = join(process.cwd(), "public/VT323-Regular.ttf");
 let interReg = fs.readFileSync(VT323);
 
-function getImageDataUri(imageName: string): string {
-  const imagePath = join(process.cwd(), `public/beasts/${imageName}.png`);
-  const imageBuffer = fs.readFileSync(imagePath);
-  return `data:image/png;base64,${imageBuffer.toString("base64")}`;
-}
-
-const accountPairs = [
-  {
-    address: dojoConfig.masterAddress,
-    privateKey: dojoConfig.masterPrivateKey,
-  },
-  {
-    address:
-      "0x6ce4e580b19470a78aa70241d33fdee23af73b8791d3c4fbc81c83c4ce9d201",
-    privateKey:
-      "0x30bed1dcb285ac3a4721d9a7fd292b2ecf8c2169beb70c07f5dba6a1f58eabf",
-  },
-  {
-    address:
-      "0x74579abbb057d8a40d0fb1a531ee803557b91754e039bf33373f304fc5648a4",
-    privateKey:
-      "0x16804d2791074d60c10a49a0d22b1d0b824c64804c4c748e2022f6485a8a0dd",
-  },
-];
-
-export type State = {
-  entered: boolean;
-  leaderBoard: boolean;
+type State = {
+  sup: boolean;
 };
 
-const account = new Account(
+const initialState = { sup: false };
+
+const fakeAccount = new Account(
   dojoProvider.provider,
-  dojoConfig.masterAddress,
-  dojoConfig.masterPrivateKey
+  "0x29873c310fbefde666dc32a1554fea6bb45eecc84f680f8a2b0a8fbb8cb89af",
+  "0xc5b2fcab997346f3ea1c00b002ecf6f382c5f9c9659a3894eb783c5320f912"
 );
 
-const spawnAccount = new Account(
-  dojoProvider.provider,
-  accountPairs[1].address,
-  accountPairs[1].privateKey
-);
-
-const exploreAccount = new Account(
-  dojoProvider.provider,
-  accountPairs[2].address,
-  accountPairs[2].privateKey
-);
-
-const initialState = { entered: false, leaderBoard: false };
+const secondsToCountdownString = (seconds: number) => {
+  const minutes = Math.trunc(seconds / 60);
+  const remainingSeconds = seconds % 60;
+  return `${minutes}m ${remainingSeconds}s`;
+};
 
 const reducer: FrameReducer<State> = (state, action) => {
-  console.log("action", action);
   return state;
 };
 
-export default async function Home({
-  params,
-  searchParams,
-}: NextServerPageProps) {
+// This is a react server component only
+export default async function Home({ searchParams }: NextServerPageProps) {
   const previousFrame = getPreviousFrame<State>(searchParams);
 
   const frameMessage = await getFrameMessage(previousFrame.postBody, {
     ...DEBUG_HUB_OPTIONS,
   });
 
-  console.log("frameMessage", previousFrame);
-
-  if (frameMessage && !frameMessage?.isValid) {
-    throw new Error("Invalid frame payload");
-  }
+  await validateActionSignature(previousFrame.postBody, DEBUG_HUB_OPTIONS);
 
   const [state, dispatch] = useFramesReducer<State>(
     reducer,
@@ -123,77 +64,80 @@ export default async function Home({
     previousFrame
   );
 
-  let player = [
-    ["0x0", "0x0", "0x0", "0x0", "0x0", "0x0"],
-    ["0x0", "0x0", "0x0", "0x0", "0x0", "0x0"],
-  ];
-
   if (frameMessage) {
-    player = await getState({
-      player_id: frameMessage.requesterFid || 0,
-      game_id: 1,
+    const { result: playerPress } = await dojoProvider.call(
+      "button",
+      "get_button_press",
+      [frameMessage.requesterFid]
+    );
+
+    if (Number(playerPress[1])) {
+      return (
+        <FrameContainer
+          postUrl="/frames"
+          pathname="/"
+          state={state}
+          previousFrame={previousFrame}
+        >
+          <FrameImage
+            aspectRatio="1:1"
+            options={{
+              width: 1146,
+              height: 1146,
+              fonts: [
+                {
+                  name: "Inter",
+                  data: interReg,
+                  weight: 400,
+                  style: "normal",
+                },
+              ],
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "stretch",
+                width: "100%",
+                height: "100vh",
+                backgroundColor: "black",
+                color: "white",
+              }}
+            >
+              <div tw="flex text-6xl flex-col py-0 px-12 text-[#49f627] w-full">
+                <h1 tw="mb-0 text-center self-center">🙏</h1>
+                <p tw="mb-0">You have already done your part.</p>
+                <p tw="mt-auto">You may rest</p>
+              </div>
+            </div>
+          </FrameImage>
+        </FrameContainer>
+      );
+    }
+
+    const pressTransaction = await dojoProvider.execute(
+      fakeAccount,
+      "button",
+      "press",
+      [frameMessage.requesterFid]
+    );
+
+    await fakeAccount.waitForTransaction(pressTransaction.transaction_hash, {
+      retryInterval: 100,
     });
 
-    if (player[0][0] === "0x0") {
-      await onload({
-        account,
-        player_id: frameMessage.requesterFid,
-        game_id: 1,
-      });
-    }
+    const { result: pressResult } = await dojoProvider.call(
+      "button",
+      "get_button_press",
+      [frameMessage.requesterFid]
+    );
 
-    console.log(frameMessage.buttonIndex);
-
-    try {
-      const tx = await input({
-        account,
-        player_id: frameMessage.requesterFid,
-        game_id: 1,
-        button: frameMessage.buttonIndex || 0,
-        input: frameMessage.inputText || "0",
-      });
-
-      await account.waitForTransaction(tx.transaction_hash, {
-        retryInterval: 100,
-      });
-
-      player = await getState({
-        player_id: frameMessage.requesterFid || 0,
-        game_id: 1,
-      });
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
-  const playerParsed = {
-    player: parseInt(player[0][0]),
-    game_id: parseInt(player[0][1]),
-    power: parseInt(player[0][2]),
-    button: parseInt(player[0][3]),
-    last_button: parseInt(player[0][4]),
-    view: parseInt(player[0][5]),
-  };
-
-  const sniperParsed = {
-    player_id: parseInt(player[1][0]),
-    last_action: parseInt(player[1][1]),
-    hidden_until: parseInt(player[1][2]),
-    total_kill_count: parseInt(player[1][3]),
-    killed_by: parseInt(player[1][4]),
-    health: parseInt(player[1][5]),
-  };
-
-  console.log("playerParsed", playerParsed, sniperParsed);
-
-  return (
-    <div
-      className={`${googleVT323.variable} font-sans  p-4 bg-black text-[#49f627] h-screen w-screen`}
-    >
+    return (
       <FrameContainer
         postUrl="/frames"
-        state={state}
         pathname="/"
+        state={state}
         previousFrame={previousFrame}
       >
         <FrameImage
@@ -211,25 +155,158 @@ export default async function Home({
             ],
           }}
         >
-          <div tw="flex w-full h-full bg-black text-white text-[72px] p-10">
-            {viewNames[playerParsed.view]}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "stretch",
+              width: "100%",
+              height: "100vh",
+              backgroundColor: "black",
+              color: "white",
+            }}
+          >
+            <div tw="flex text-6xl flex-col py-0 px-12 text-[#49f627]">
+              <h1 tw="mb-0 text-center self-center">🙏</h1>
+              <p tw="mb-0">The world thanks you.</p>
+              <p tw="mb-0">
+                You pressed the button with{" "}
+                {secondsToCountdownString(Number(pressResult[2]))} remaining.
+              </p>
+              <p tw="mt-auto">You rock</p>
+            </div>
           </div>
         </FrameImage>
-
-        {frameBoyViews[playerParsed.view].input && (
-          <FrameInput text={frameBoyViews[playerParsed.view].inputText} />
-        )}
-
-        {playerParsed.player != 0 ? (
-          frameBoyViews[playerParsed.view].buttons.map((button, index) => (
-            <FrameButton onClick={dispatch} key={index}>
-              {button}
-            </FrameButton>
-          ))
-        ) : (
-          <FrameButton onClick={dispatch}>{"enter"}</FrameButton>
-        )}
       </FrameContainer>
-    </div>
+    );
+  }
+
+  const { result: buttonDetails } = await dojoProvider.call(
+    "button",
+    "get_details"
+  );
+
+  const secondsLeft = differenceInSeconds(
+    addSeconds(
+      fromUnixTime(Number(buttonDetails[1])),
+      Number(buttonDetails[2])
+    ),
+    new Date()
+  );
+
+  const leaderboardCall = async () => {
+    const response = await fetch(dojoConfig.toriiUrl + "/graphql", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        // Include other headers as needed, for example, authorization headers
+      },
+      body: JSON.stringify({
+        query: `
+        {
+            buttonPressModels(order: {field: TIME_REMAINING, direction:ASC}, limit: 5) {
+            edges {
+                node {
+                player
+                time_remaining
+                }
+            }
+            }
+        }
+      `,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+
+    const data = await response.json();
+
+    const resolvedDataPromises = data.data.buttonPressModels.edges.map(
+      async (edge) => {
+        const userData = await getUserDataForFid(edge.node.player);
+
+        if (!userData) {
+          return {
+            player: "Unknown",
+            time_remaining: secondsToCountdownString(edge.node.time_remaining),
+          };
+        }
+
+        const name = userData.username;
+        return {
+          player: name,
+          time_remaining: secondsToCountdownString(edge.node.time_remaining),
+        };
+      }
+    );
+
+    return Promise.all(resolvedDataPromises);
+  };
+  const leaderboardData = await leaderboardCall();
+
+  return (
+    <FrameContainer
+      postUrl="/frames"
+      pathname="/"
+      state={state}
+      previousFrame={previousFrame}
+    >
+      <FrameImage
+        aspectRatio="1:1"
+        options={{
+          width: 1146,
+          height: 1146,
+          fonts: [
+            {
+              name: "Inter",
+              data: interReg,
+              weight: 400,
+              style: "normal",
+            },
+          ],
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "stretch",
+            width: "100%",
+            height: "100vh",
+            backgroundColor: "black",
+            color: "white",
+          }}
+        >
+          <div tw="flex text-6xl flex-col py-0 px-12 text-[#49f627]">
+            <h1 tw="mb-0">Press the button</h1>
+            <p tw="mb-0">
+              If this button isn&apos;t pressed for 15 minutes, it will be the
+              end of the world. Help us save the world by pressing the button.
+              You only get one press. Use it wisely.
+            </p>
+            <p tw="mb-0">Times pressed: {Number(buttonDetails[0])}</p>
+            <p tw="mb-0">Countdown - {secondsToCountdownString(secondsLeft)}</p>
+            {leaderboardData.length > 0 && (
+              <div tw="mt-auto flex flex-col mb-6">
+                <h3 tw="mb-0">Greatest heroes</h3>
+                {leaderboardData.map((leaderboard: any, index: number) => {
+                  return (
+                    <span key={index}>
+                      {index + 1}. {leaderboard.player} -{" "}
+                      {leaderboard.time_remaining}
+                    </span>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+        </div>
+      </FrameImage>
+      {Number(buttonDetails[1]) > 0 && (
+        <FrameButton onClick={dispatch}>💾 SAVE THE WORLD 💾</FrameButton>
+      )}
+    </FrameContainer>
   );
 }
