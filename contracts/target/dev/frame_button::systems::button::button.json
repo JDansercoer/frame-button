@@ -35,7 +35,7 @@
     "0x6",
     "0x2d643e7591d8fd5817f2ecca3fae594c5ac2e1dbccc07039b15654cd917ae2e",
     "0x7",
-    "0x21402593597b81842776cdf2bf85ac6b9c81b7388e464493d6f8180b2d059eb",
+    "0xe8d9bfd0459a39173f71967d3190a08e05d0aadf4f92feded0f17a81f8e7e7",
     "0x8",
     "0x15",
     "0x2a",
@@ -119,19 +119,19 @@
     "0x3da706a1dd7255116bb125f1e1eaaeb9c00deedde6659be515492624e66c347",
     "0x40",
     "0x53746f726167654261736541646472657373",
-    "0x2590664028d58cea848d5f5dbacc8e09ce25364b8ef4537cd5dded4f2b94eda",
+    "0x21d93ee0edb60653ec7cafc3a37895c4348a3c7d384e92db4f0a644d7f1b003",
     "0x800000000000000f00000000000000000000000000000003",
     "0x43",
-    "0xcf6beb03a72466c428045fe5c0736da62cb3f493972a42822097a1a395c85b",
+    "0x10023181b79ce56b96599fde0f66cf5c754c997db06e832c73d19da411ab60e",
     "0x44",
     "0x11c6d8087e00642489f92d2821ad6ebd6532ad1a3b6d12833da6d6810391511",
     "0x1ee471fea880cdb75aff7b143b1653e4803b9dca47f4fcdd349d11fec9d7a16",
     "0x47",
-    "0x377561ae96fa4f8ac92c16d70589796d3159171fdca0124af0cb54aa8e25488",
-    "0x2374c7c0492315c6186a1703641bdcbd661f637368562d975b25810856be8e4",
+    "0x860c894ae01f68ebb531275c165736408474f46ff370cec3e3f3153d7c79e9",
+    "0xd4b6266285c5e0df7012c9986d4171fd1e247620d1eabff740ed8cce41fe77",
     "0x49",
-    "0x31e44c36f7762ef93b6498932b529e7d7ca01bc8dcbd2c9ed85137664a0d65c",
-    "0x241ab04aa98f18e759b1c632f46ce7d4a5cfa4d2c84e8cd0a17801c687864c0",
+    "0x3bf7cb6348f10c55c55c9ea3fefabf438eac93f8b64f1e30a340e6f17591711",
+    "0x205550d13827dbf6860078878a9dbd4a1da8e04f4cd77bf08543602771c4f7c",
     "0x4b",
     "0x74584e9f10ffb1a40aa5a3582e203f6758defc4a497d1a2d5a89f274a320e9",
     "0x4d",
@@ -145,18 +145,18 @@
     "0x58",
     "0x53797374656d",
     "0x5a",
-    "0x664595582115633ba1018f72a9c7583e426b32312a90ceb46afbfbdda70202",
-    "0x336c5673c40783859e354e00546cb1486b7de63bd446208ef01162f1ce8009e",
+    "0x1d41dca599eb67736ea92404349704adbc351638128a6e22876ed16d08d535e",
+    "0x3ee3e3a2cc2b19173c991507888881fab88c079eea21a2fd50e8de0c0625759",
     "0x5e",
     "0x5f",
-    "0x2a9c7cf5e78243d87c94877a769dd30193858ce69c2c86249fae96e99861a3",
+    "0x36d464d154f498e03a0f60341444ddadc26cdb7fc0b710d5a6d0ee1d4c120a5",
     "0x60",
     "0x11771f2d3e7dc3ed5afe7eae405dfd127619490dec57ceaa021ac8bc2b9b315",
-    "0x21c2126caade7b1418e806aa152414ae635f0d4a565523cd400635f5f2bdc3d",
+    "0x243532e515780f8df53234f314ff2b5ded7f77ea9d51c1578108805674dd9b3",
     "0x63",
-    "0x15f548d4ea0e66a4d0da245a0abbbf5bace9267d4dfb6765ed972428a8af550",
+    "0x185442a145c5182ca12457440432546d74b5c7a5a07126b25acb0791dbb5269",
     "0x65",
-    "0x334cb4202ca2d582589ed340fcad08f387a90d3d95c82fd63e0751616290c4b",
+    "0x3a5bca71434b9f10fd14c39f8805c054b3233f344a44e5f25d0c6171d9e859c",
     "0x66",
     "0x800000000000000f00000000000000000000000000000002",
     "0xcc5e86243f861d2d64b08c35db21013e773ac5cf10097946fe0011304886d5",
@@ -2359,7 +2359,7 @@
       ],
       [
         9,
-        "dojo_starter::systems::button::button::Event"
+        "frame_button::systems::button::button::Event"
       ],
       [
         10,
@@ -2591,15 +2591,15 @@
       ],
       [
         67,
-        "dojo::components::upgradeable::upgradeable::ComponentState::<dojo_starter::systems::button::button::ContractState>"
+        "dojo::components::upgradeable::upgradeable::ComponentState::<frame_button::systems::button::button::ContractState>"
       ],
       [
         68,
-        "Tuple<dojo::components::upgradeable::upgradeable::ComponentState::<dojo_starter::systems::button::button::ContractState>, Unit>"
+        "Tuple<dojo::components::upgradeable::upgradeable::ComponentState::<frame_button::systems::button::button::ContractState>, Unit>"
       ],
       [
         69,
-        "core::panics::PanicResult::<(dojo::components::upgradeable::upgradeable::ComponentState::<dojo_starter::systems::button::button::ContractState>, ())>"
+        "core::panics::PanicResult::<(dojo::components::upgradeable::upgradeable::ComponentState::<frame_button::systems::button::button::ContractState>, ())>"
       ],
       [
         70,
@@ -2615,19 +2615,19 @@
       ],
       [
         73,
-        "dojo_starter::models::buttonPress::Button"
+        "frame_button::models::buttonPress::Button"
       ],
       [
         74,
-        "core::option::Option::<dojo_starter::models::buttonPress::Button>"
+        "core::option::Option::<frame_button::models::buttonPress::Button>"
       ],
       [
         75,
-        "dojo_starter::models::buttonPress::ButtonPress"
+        "frame_button::models::buttonPress::ButtonPress"
       ],
       [
         76,
-        "core::option::Option::<dojo_starter::models::buttonPress::ButtonPress>"
+        "core::option::Option::<frame_button::models::buttonPress::ButtonPress>"
       ],
       [
         77,
@@ -2699,19 +2699,19 @@
       ],
       [
         94,
-        "dojo_starter::systems::button::button::world_dispatcher::ContractMemberState"
+        "frame_button::systems::button::button::world_dispatcher::ContractMemberState"
       ],
       [
         95,
-        "dojo_starter::systems::button::button::ContractState"
+        "frame_button::systems::button::button::ContractState"
       ],
       [
         96,
-        "Tuple<dojo_starter::systems::button::button::ContractState, Unit>"
+        "Tuple<frame_button::systems::button::button::ContractState, Unit>"
       ],
       [
         97,
-        "core::panics::PanicResult::<(dojo_starter::systems::button::button::ContractState, ())>"
+        "core::panics::PanicResult::<(frame_button::systems::button::button::ContractState, ())>"
       ],
       [
         98,
@@ -2719,23 +2719,23 @@
       ],
       [
         99,
-        "Tuple<dojo_starter::models::buttonPress::ButtonPress>"
+        "Tuple<frame_button::models::buttonPress::ButtonPress>"
       ],
       [
         100,
-        "core::panics::PanicResult::<(dojo_starter::models::buttonPress::ButtonPress,)>"
+        "core::panics::PanicResult::<(frame_button::models::buttonPress::ButtonPress,)>"
       ],
       [
         101,
-        "dojo_starter::systems::button::ButtonDetails"
+        "frame_button::systems::button::ButtonDetails"
       ],
       [
         102,
-        "Tuple<dojo_starter::systems::button::ButtonDetails>"
+        "Tuple<frame_button::systems::button::ButtonDetails>"
       ],
       [
         103,
-        "core::panics::PanicResult::<(dojo_starter::systems::button::ButtonDetails,)>"
+        "core::panics::PanicResult::<(frame_button::systems::button::ButtonDetails,)>"
       ],
       [
         104,
@@ -2929,27 +2929,27 @@
       ],
       [
         38,
-        "struct_construct<dojo_starter::systems::button::button::world_dispatcher::ContractMemberState>"
+        "struct_construct<frame_button::systems::button::button::world_dispatcher::ContractMemberState>"
       ],
       [
         39,
-        "struct_construct<dojo::components::upgradeable::upgradeable::ComponentState::<dojo_starter::systems::button::button::ContractState>>"
+        "struct_construct<dojo::components::upgradeable::upgradeable::ComponentState::<frame_button::systems::button::button::ContractState>>"
       ],
       [
         40,
-        "struct_construct<dojo_starter::systems::button::button::ContractState>"
+        "struct_construct<frame_button::systems::button::button::ContractState>"
       ],
       [
         41,
-        "snapshot_take<dojo_starter::systems::button::button::ContractState>"
+        "snapshot_take<frame_button::systems::button::button::ContractState>"
       ],
       [
         42,
-        "drop<dojo_starter::systems::button::button::ContractState>"
+        "drop<frame_button::systems::button::button::ContractState>"
       ],
       [
         43,
-        "function_call<user@dojo_starter::systems::button::button::WorldProviderImpl::world>"
+        "function_call<user@frame_button::systems::button::button::WorldProviderImpl::world>"
       ],
       [
         44,
@@ -3033,7 +3033,7 @@
       ],
       [
         64,
-        "function_call<user@dojo_starter::systems::button::button::ButtonImpl::press>"
+        "function_call<user@frame_button::systems::button::button::ButtonImpl::press>"
       ],
       [
         65,
@@ -3053,59 +3053,59 @@
       ],
       [
         69,
-        "function_call<user@dojo_starter::systems::button::button::ButtonImpl::get_details>"
+        "function_call<user@frame_button::systems::button::button::ButtonImpl::get_details>"
       ],
       [
         70,
-        "enum_match<core::panics::PanicResult::<(dojo_starter::systems::button::ButtonDetails,)>>"
+        "enum_match<core::panics::PanicResult::<(frame_button::systems::button::ButtonDetails,)>>"
       ],
       [
         71,
-        "struct_deconstruct<Tuple<dojo_starter::systems::button::ButtonDetails>>"
+        "struct_deconstruct<Tuple<frame_button::systems::button::ButtonDetails>>"
       ],
       [
         72,
-        "snapshot_take<dojo_starter::systems::button::ButtonDetails>"
+        "snapshot_take<frame_button::systems::button::ButtonDetails>"
       ],
       [
         73,
-        "drop<dojo_starter::systems::button::ButtonDetails>"
+        "drop<frame_button::systems::button::ButtonDetails>"
       ],
       [
         74,
-        "store_temp<dojo_starter::systems::button::ButtonDetails>"
+        "store_temp<frame_button::systems::button::ButtonDetails>"
       ],
       [
         75,
-        "function_call<user@dojo_starter::systems::button::ButtonDetailsSerde::serialize>"
+        "function_call<user@frame_button::systems::button::ButtonDetailsSerde::serialize>"
       ],
       [
         76,
-        "function_call<user@dojo_starter::systems::button::button::ButtonImpl::get_button_press>"
+        "function_call<user@frame_button::systems::button::button::ButtonImpl::get_button_press>"
       ],
       [
         77,
-        "enum_match<core::panics::PanicResult::<(dojo_starter::models::buttonPress::ButtonPress,)>>"
+        "enum_match<core::panics::PanicResult::<(frame_button::models::buttonPress::ButtonPress,)>>"
       ],
       [
         78,
-        "struct_deconstruct<Tuple<dojo_starter::models::buttonPress::ButtonPress>>"
+        "struct_deconstruct<Tuple<frame_button::models::buttonPress::ButtonPress>>"
       ],
       [
         79,
-        "snapshot_take<dojo_starter::models::buttonPress::ButtonPress>"
+        "snapshot_take<frame_button::models::buttonPress::ButtonPress>"
       ],
       [
         80,
-        "drop<dojo_starter::models::buttonPress::ButtonPress>"
+        "drop<frame_button::models::buttonPress::ButtonPress>"
       ],
       [
         81,
-        "store_temp<dojo_starter::models::buttonPress::ButtonPress>"
+        "store_temp<frame_button::models::buttonPress::ButtonPress>"
       ],
       [
         82,
-        "function_call<user@dojo_starter::models::buttonPress::ButtonPressSerde::serialize>"
+        "function_call<user@frame_button::models::buttonPress::ButtonPressSerde::serialize>"
       ],
       [
         83,
@@ -3129,27 +3129,27 @@
       ],
       [
         88,
-        "function_call<user@dojo::components::upgradeable::upgradeable::UpgradableImpl::<dojo_starter::systems::button::button::ContractState, dojo_starter::systems::button::button::HasComponentImpl_upgradeable, dojo_starter::systems::button::button::WorldProviderImpl, dojo_starter::systems::button::button::ContractStateDrop>::upgrade>"
+        "function_call<user@dojo::components::upgradeable::upgradeable::UpgradableImpl::<frame_button::systems::button::button::ContractState, frame_button::systems::button::button::HasComponentImpl_upgradeable, frame_button::systems::button::button::WorldProviderImpl, frame_button::systems::button::button::ContractStateDrop>::upgrade>"
       ],
       [
         89,
-        "enum_match<core::panics::PanicResult::<(dojo_starter::systems::button::button::ContractState, ())>>"
+        "enum_match<core::panics::PanicResult::<(frame_button::systems::button::button::ContractState, ())>>"
       ],
       [
         90,
-        "drop<Tuple<dojo_starter::systems::button::button::ContractState, Unit>>"
+        "drop<Tuple<frame_button::systems::button::button::ContractState, Unit>>"
       ],
       [
         91,
-        "struct_deconstruct<dojo_starter::systems::button::button::ContractState>"
+        "struct_deconstruct<frame_button::systems::button::button::ContractState>"
       ],
       [
         92,
-        "drop<dojo::components::upgradeable::upgradeable::ComponentState::<dojo_starter::systems::button::button::ContractState>>"
+        "drop<dojo::components::upgradeable::upgradeable::ComponentState::<frame_button::systems::button::button::ContractState>>"
       ],
       [
         93,
-        "function_call<user@dojo_starter::systems::button::button::world_dispatcher::InternalContractMemberStateImpl::read>"
+        "function_call<user@frame_button::systems::button::button::world_dispatcher::InternalContractMemberStateImpl::read>"
       ],
       [
         94,
@@ -3369,15 +3369,15 @@
       ],
       [
         148,
-        "function_call<user@dojo_starter::models::buttonPress::ButtonPressSerde::deserialize>"
+        "function_call<user@frame_button::models::buttonPress::ButtonPressSerde::deserialize>"
       ],
       [
         149,
-        "enum_match<core::option::Option::<dojo_starter::models::buttonPress::ButtonPress>>"
+        "enum_match<core::option::Option::<frame_button::models::buttonPress::ButtonPress>>"
       ],
       [
         150,
-        "struct_deconstruct<dojo_starter::models::buttonPress::ButtonPress>"
+        "struct_deconstruct<frame_button::models::buttonPress::ButtonPress>"
       ],
       [
         151,
@@ -3473,15 +3473,15 @@
       ],
       [
         174,
-        "function_call<user@dojo_starter::models::buttonPress::ButtonSerde::deserialize>"
+        "function_call<user@frame_button::models::buttonPress::ButtonSerde::deserialize>"
       ],
       [
         175,
-        "enum_match<core::option::Option::<dojo_starter::models::buttonPress::Button>>"
+        "enum_match<core::option::Option::<frame_button::models::buttonPress::Button>>"
       ],
       [
         176,
-        "struct_deconstruct<dojo_starter::models::buttonPress::Button>"
+        "struct_deconstruct<frame_button::models::buttonPress::Button>"
       ],
       [
         177,
@@ -3541,11 +3541,11 @@
       ],
       [
         191,
-        "struct_construct<dojo_starter::models::buttonPress::ButtonPress>"
+        "struct_construct<frame_button::models::buttonPress::ButtonPress>"
       ],
       [
         192,
-        "dup<dojo_starter::models::buttonPress::ButtonPress>"
+        "dup<frame_button::models::buttonPress::ButtonPress>"
       ],
       [
         193,
@@ -3569,23 +3569,23 @@
       ],
       [
         198,
-        "struct_construct<dojo_starter::models::buttonPress::Button>"
+        "struct_construct<frame_button::models::buttonPress::Button>"
       ],
       [
         199,
-        "snapshot_take<dojo_starter::models::buttonPress::Button>"
+        "snapshot_take<frame_button::models::buttonPress::Button>"
       ],
       [
         200,
-        "drop<dojo_starter::models::buttonPress::Button>"
+        "drop<frame_button::models::buttonPress::Button>"
       ],
       [
         201,
-        "store_temp<dojo_starter::models::buttonPress::Button>"
+        "store_temp<frame_button::models::buttonPress::Button>"
       ],
       [
         202,
-        "dup<dojo_starter::models::buttonPress::Button>"
+        "dup<frame_button::models::buttonPress::Button>"
       ],
       [
         203,
@@ -3629,47 +3629,47 @@
       ],
       [
         213,
-        "struct_construct<dojo_starter::systems::button::ButtonDetails>"
+        "struct_construct<frame_button::systems::button::ButtonDetails>"
       ],
       [
         214,
-        "struct_construct<Tuple<dojo_starter::systems::button::ButtonDetails>>"
+        "struct_construct<Tuple<frame_button::systems::button::ButtonDetails>>"
       ],
       [
         215,
-        "enum_init<core::panics::PanicResult::<(dojo_starter::systems::button::ButtonDetails,)>, 0>"
+        "enum_init<core::panics::PanicResult::<(frame_button::systems::button::ButtonDetails,)>, 0>"
       ],
       [
         216,
-        "store_temp<core::panics::PanicResult::<(dojo_starter::systems::button::ButtonDetails,)>>"
+        "store_temp<core::panics::PanicResult::<(frame_button::systems::button::ButtonDetails,)>>"
       ],
       [
         217,
-        "enum_init<core::panics::PanicResult::<(dojo_starter::systems::button::ButtonDetails,)>, 1>"
+        "enum_init<core::panics::PanicResult::<(frame_button::systems::button::ButtonDetails,)>, 1>"
       ],
       [
         218,
-        "dup<dojo_starter::systems::button::ButtonDetails>"
+        "dup<frame_button::systems::button::ButtonDetails>"
       ],
       [
         219,
-        "struct_deconstruct<dojo_starter::systems::button::ButtonDetails>"
+        "struct_deconstruct<frame_button::systems::button::ButtonDetails>"
       ],
       [
         220,
-        "struct_construct<Tuple<dojo_starter::models::buttonPress::ButtonPress>>"
+        "struct_construct<Tuple<frame_button::models::buttonPress::ButtonPress>>"
       ],
       [
         221,
-        "enum_init<core::panics::PanicResult::<(dojo_starter::models::buttonPress::ButtonPress,)>, 0>"
+        "enum_init<core::panics::PanicResult::<(frame_button::models::buttonPress::ButtonPress,)>, 0>"
       ],
       [
         222,
-        "store_temp<core::panics::PanicResult::<(dojo_starter::models::buttonPress::ButtonPress,)>>"
+        "store_temp<core::panics::PanicResult::<(frame_button::models::buttonPress::ButtonPress,)>>"
       ],
       [
         223,
-        "enum_init<core::panics::PanicResult::<(dojo_starter::models::buttonPress::ButtonPress,)>, 1>"
+        "enum_init<core::panics::PanicResult::<(frame_button::models::buttonPress::ButtonPress,)>, 1>"
       ],
       [
         224,
@@ -3697,35 +3697,35 @@
       ],
       [
         230,
-        "function_call<user@dojo::components::upgradeable::upgradeable::Upgradable::<dojo_starter::systems::button::button::ContractState, dojo_starter::systems::button::button::HasComponentImpl_upgradeable, dojo_starter::systems::button::button::WorldProviderImpl>::upgrade>"
+        "function_call<user@dojo::components::upgradeable::upgradeable::Upgradable::<frame_button::systems::button::button::ContractState, frame_button::systems::button::button::HasComponentImpl_upgradeable, frame_button::systems::button::button::WorldProviderImpl>::upgrade>"
       ],
       [
         231,
-        "enum_match<core::panics::PanicResult::<(dojo::components::upgradeable::upgradeable::ComponentState::<dojo_starter::systems::button::button::ContractState>, ())>>"
+        "enum_match<core::panics::PanicResult::<(dojo::components::upgradeable::upgradeable::ComponentState::<frame_button::systems::button::button::ContractState>, ())>>"
       ],
       [
         232,
-        "struct_deconstruct<Tuple<dojo::components::upgradeable::upgradeable::ComponentState::<dojo_starter::systems::button::button::ContractState>, Unit>>"
+        "struct_deconstruct<Tuple<dojo::components::upgradeable::upgradeable::ComponentState::<frame_button::systems::button::button::ContractState>, Unit>>"
       ],
       [
         233,
-        "struct_construct<Tuple<dojo_starter::systems::button::button::ContractState, Unit>>"
+        "struct_construct<Tuple<frame_button::systems::button::button::ContractState, Unit>>"
       ],
       [
         234,
-        "enum_init<core::panics::PanicResult::<(dojo_starter::systems::button::button::ContractState, ())>, 0>"
+        "enum_init<core::panics::PanicResult::<(frame_button::systems::button::button::ContractState, ())>, 0>"
       ],
       [
         235,
-        "store_temp<core::panics::PanicResult::<(dojo_starter::systems::button::button::ContractState, ())>>"
+        "store_temp<core::panics::PanicResult::<(frame_button::systems::button::button::ContractState, ())>>"
       ],
       [
         236,
-        "enum_init<core::panics::PanicResult::<(dojo_starter::systems::button::button::ContractState, ())>, 1>"
+        "enum_init<core::panics::PanicResult::<(frame_button::systems::button::button::ContractState, ())>, 1>"
       ],
       [
         237,
-        "drop<dojo_starter::systems::button::button::world_dispatcher::ContractMemberState>"
+        "drop<frame_button::systems::button::button::world_dispatcher::ContractMemberState>"
       ],
       [
         238,
@@ -3921,11 +3921,11 @@
       ],
       [
         286,
-        "enum_init<core::option::Option::<dojo_starter::models::buttonPress::ButtonPress>, 0>"
+        "enum_init<core::option::Option::<frame_button::models::buttonPress::ButtonPress>, 0>"
       ],
       [
         287,
-        "store_temp<core::option::Option::<dojo_starter::models::buttonPress::ButtonPress>>"
+        "store_temp<core::option::Option::<frame_button::models::buttonPress::ButtonPress>>"
       ],
       [
         288,
@@ -3933,7 +3933,7 @@
       ],
       [
         289,
-        "enum_init<core::option::Option::<dojo_starter::models::buttonPress::ButtonPress>, 1>"
+        "enum_init<core::option::Option::<frame_button::models::buttonPress::ButtonPress>, 1>"
       ],
       [
         290,
@@ -3945,15 +3945,15 @@
       ],
       [
         292,
-        "enum_init<core::option::Option::<dojo_starter::models::buttonPress::Button>, 0>"
+        "enum_init<core::option::Option::<frame_button::models::buttonPress::Button>, 0>"
       ],
       [
         293,
-        "store_temp<core::option::Option::<dojo_starter::models::buttonPress::Button>>"
+        "store_temp<core::option::Option::<frame_button::models::buttonPress::Button>>"
       ],
       [
         294,
-        "enum_init<core::option::Option::<dojo_starter::models::buttonPress::Button>, 1>"
+        "enum_init<core::option::Option::<frame_button::models::buttonPress::Button>, 1>"
       ],
       [
         295,
@@ -4049,11 +4049,11 @@
       ],
       [
         318,
-        "snapshot_take<dojo::components::upgradeable::upgradeable::ComponentState::<dojo_starter::systems::button::button::ContractState>>"
+        "snapshot_take<dojo::components::upgradeable::upgradeable::ComponentState::<frame_button::systems::button::button::ContractState>>"
       ],
       [
         319,
-        "function_call<user@dojo_starter::systems::button::button::HasComponentImpl_upgradeable::get_contract>"
+        "function_call<user@frame_button::systems::button::button::HasComponentImpl_upgradeable::get_contract>"
       ],
       [
         320,
@@ -4081,11 +4081,11 @@
       ],
       [
         326,
-        "enum_init<core::panics::PanicResult::<(dojo::components::upgradeable::upgradeable::ComponentState::<dojo_starter::systems::button::button::ContractState>, ())>, 1>"
+        "enum_init<core::panics::PanicResult::<(dojo::components::upgradeable::upgradeable::ComponentState::<frame_button::systems::button::button::ContractState>, ())>, 1>"
       ],
       [
         327,
-        "store_temp<core::panics::PanicResult::<(dojo::components::upgradeable::upgradeable::ComponentState::<dojo_starter::systems::button::button::ContractState>, ())>>"
+        "store_temp<core::panics::PanicResult::<(dojo::components::upgradeable::upgradeable::ComponentState::<frame_button::systems::button::button::ContractState>, ())>>"
       ],
       [
         328,
@@ -4149,15 +4149,15 @@
       ],
       [
         343,
-        "function_call<user@dojo_starter::systems::button::button::HasComponentImpl_upgradeable::emit::<dojo::components::upgradeable::upgradeable::Upgraded, dojo::components::upgradeable::upgradeable::EventUpgradedIntoEvent>>"
+        "function_call<user@frame_button::systems::button::button::HasComponentImpl_upgradeable::emit::<dojo::components::upgradeable::upgradeable::Upgraded, dojo::components::upgradeable::upgradeable::EventUpgradedIntoEvent>>"
       ],
       [
         344,
-        "struct_construct<Tuple<dojo::components::upgradeable::upgradeable::ComponentState::<dojo_starter::systems::button::button::ContractState>, Unit>>"
+        "struct_construct<Tuple<dojo::components::upgradeable::upgradeable::ComponentState::<frame_button::systems::button::button::ContractState>, Unit>>"
       ],
       [
         345,
-        "enum_init<core::panics::PanicResult::<(dojo::components::upgradeable::upgradeable::ComponentState::<dojo_starter::systems::button::button::ContractState>, ())>, 0>"
+        "enum_init<core::panics::PanicResult::<(dojo::components::upgradeable::upgradeable::ComponentState::<frame_button::systems::button::button::ContractState>, ())>, 0>"
       ],
       [
         346,
@@ -4501,15 +4501,15 @@
       ],
       [
         431,
-        "enum_init<dojo_starter::systems::button::button::Event, 0>"
+        "enum_init<frame_button::systems::button::button::Event, 0>"
       ],
       [
         432,
-        "store_temp<dojo_starter::systems::button::button::Event>"
+        "store_temp<frame_button::systems::button::button::Event>"
       ],
       [
         433,
-        "function_call<user@dojo_starter::systems::button::button::ContractStateEventEmitter::emit::<dojo_starter::systems::button::button::Event, core::traits::TIntoT::<dojo_starter::systems::button::button::Event>>>"
+        "function_call<user@frame_button::systems::button::button::ContractStateEventEmitter::emit::<frame_button::systems::button::button::Event, core::traits::TIntoT::<frame_button::systems::button::button::Event>>>"
       ],
       [
         434,
@@ -4649,19 +4649,19 @@
       ],
       [
         468,
-        "function_call<user@core::traits::TIntoT::<dojo_starter::systems::button::button::Event>::into>"
+        "function_call<user@core::traits::TIntoT::<frame_button::systems::button::button::Event>::into>"
       ],
       [
         469,
-        "snapshot_take<dojo_starter::systems::button::button::Event>"
+        "snapshot_take<frame_button::systems::button::button::Event>"
       ],
       [
         470,
-        "drop<dojo_starter::systems::button::button::Event>"
+        "drop<frame_button::systems::button::button::Event>"
       ],
       [
         471,
-        "function_call<user@dojo_starter::systems::button::button::EventIsEvent::append_keys_and_data>"
+        "function_call<user@frame_button::systems::button::button::EventIsEvent::append_keys_and_data>"
       ],
       [
         472,
@@ -4681,7 +4681,7 @@
       ],
       [
         476,
-        "enum_match<dojo_starter::systems::button::button::Event>"
+        "enum_match<frame_button::systems::button::button::Event>"
       ],
       [
         477,
@@ -4715,27 +4715,27 @@
     "user_func_names": [
       [
         0,
-        "dojo_starter::systems::button::button::__wrapper__dojo_resource"
+        "frame_button::systems::button::button::__wrapper__dojo_resource"
       ],
       [
         1,
-        "dojo_starter::systems::button::button::__wrapper__WorldProviderImpl__world"
+        "frame_button::systems::button::button::__wrapper__WorldProviderImpl__world"
       ],
       [
         2,
-        "dojo_starter::systems::button::button::__wrapper__ButtonImpl__press"
+        "frame_button::systems::button::button::__wrapper__ButtonImpl__press"
       ],
       [
         3,
-        "dojo_starter::systems::button::button::__wrapper__ButtonImpl__get_details"
+        "frame_button::systems::button::button::__wrapper__ButtonImpl__get_details"
       ],
       [
         4,
-        "dojo_starter::systems::button::button::__wrapper__ButtonImpl__get_button_press"
+        "frame_button::systems::button::button::__wrapper__ButtonImpl__get_button_press"
       ],
       [
         5,
-        "dojo::components::upgradeable::upgradeable::__wrapper__UpgradableImpl__upgrade::<dojo_starter::systems::button::button::ContractState, dojo_starter::systems::button::button::HasComponentImpl_upgradeable, dojo_starter::systems::button::button::WorldProviderImpl, dojo_starter::systems::button::button::ContractStateDrop, dojo_starter::systems::button::button::ContractStateUpgradableImpl>"
+        "dojo::components::upgradeable::upgradeable::__wrapper__UpgradableImpl__upgrade::<frame_button::systems::button::button::ContractState, frame_button::systems::button::button::HasComponentImpl_upgradeable, frame_button::systems::button::button::WorldProviderImpl, frame_button::systems::button::button::ContractStateDrop, frame_button::systems::button::button::ContractStateUpgradableImpl>"
       ],
       [
         6,
@@ -4743,7 +4743,7 @@
       ],
       [
         7,
-        "dojo_starter::systems::button::button::WorldProviderImpl::world"
+        "frame_button::systems::button::button::WorldProviderImpl::world"
       ],
       [
         8,
@@ -4755,23 +4755,23 @@
       ],
       [
         10,
-        "dojo_starter::systems::button::button::ButtonImpl::press"
+        "frame_button::systems::button::button::ButtonImpl::press"
       ],
       [
         11,
-        "dojo_starter::systems::button::button::ButtonImpl::get_details"
+        "frame_button::systems::button::button::ButtonImpl::get_details"
       ],
       [
         12,
-        "dojo_starter::systems::button::ButtonDetailsSerde::serialize"
+        "frame_button::systems::button::ButtonDetailsSerde::serialize"
       ],
       [
         13,
-        "dojo_starter::systems::button::button::ButtonImpl::get_button_press"
+        "frame_button::systems::button::button::ButtonImpl::get_button_press"
       ],
       [
         14,
-        "dojo_starter::models::buttonPress::ButtonPressSerde::serialize"
+        "frame_button::models::buttonPress::ButtonPressSerde::serialize"
       ],
       [
         15,
@@ -4779,11 +4779,11 @@
       ],
       [
         16,
-        "dojo::components::upgradeable::upgradeable::UpgradableImpl::<dojo_starter::systems::button::button::ContractState, dojo_starter::systems::button::button::HasComponentImpl_upgradeable, dojo_starter::systems::button::button::WorldProviderImpl, dojo_starter::systems::button::button::ContractStateDrop>::upgrade"
+        "dojo::components::upgradeable::upgradeable::UpgradableImpl::<frame_button::systems::button::button::ContractState, frame_button::systems::button::button::HasComponentImpl_upgradeable, frame_button::systems::button::button::WorldProviderImpl, frame_button::systems::button::button::ContractStateDrop>::upgrade"
       ],
       [
         17,
-        "dojo_starter::systems::button::button::world_dispatcher::InternalContractMemberStateImpl::read"
+        "frame_button::systems::button::button::world_dispatcher::InternalContractMemberStateImpl::read"
       ],
       [
         18,
@@ -4807,11 +4807,11 @@
       ],
       [
         23,
-        "dojo_starter::models::buttonPress::ButtonPressSerde::deserialize"
+        "frame_button::models::buttonPress::ButtonPressSerde::deserialize"
       ],
       [
         24,
-        "dojo_starter::models::buttonPress::ButtonSerde::deserialize"
+        "frame_button::models::buttonPress::ButtonSerde::deserialize"
       ],
       [
         25,
@@ -4839,7 +4839,7 @@
       ],
       [
         31,
-        "dojo::components::upgradeable::upgradeable::Upgradable::<dojo_starter::systems::button::button::ContractState, dojo_starter::systems::button::button::HasComponentImpl_upgradeable, dojo_starter::systems::button::button::WorldProviderImpl>::upgrade"
+        "dojo::components::upgradeable::upgradeable::Upgradable::<frame_button::systems::button::button::ContractState, frame_button::systems::button::button::HasComponentImpl_upgradeable, frame_button::systems::button::button::WorldProviderImpl>::upgrade"
       ],
       [
         32,
@@ -4895,7 +4895,7 @@
       ],
       [
         45,
-        "dojo_starter::systems::button::button::HasComponentImpl_upgradeable::get_contract"
+        "frame_button::systems::button::button::HasComponentImpl_upgradeable::get_contract"
       ],
       [
         46,
@@ -4907,7 +4907,7 @@
       ],
       [
         48,
-        "dojo_starter::systems::button::button::HasComponentImpl_upgradeable::emit::<dojo::components::upgradeable::upgradeable::Upgraded, dojo::components::upgradeable::upgradeable::EventUpgradedIntoEvent>"
+        "frame_button::systems::button::button::HasComponentImpl_upgradeable::emit::<dojo::components::upgradeable::upgradeable::Upgraded, dojo::components::upgradeable::upgradeable::EventUpgradedIntoEvent>"
       ],
       [
         49,
@@ -4943,7 +4943,7 @@
       ],
       [
         57,
-        "dojo_starter::systems::button::button::ContractStateEventEmitter::emit::<dojo_starter::systems::button::button::Event, core::traits::TIntoT::<dojo_starter::systems::button::button::Event>>"
+        "frame_button::systems::button::button::ContractStateEventEmitter::emit::<frame_button::systems::button::button::Event, core::traits::TIntoT::<frame_button::systems::button::button::Event>>"
       ],
       [
         58,
@@ -4955,11 +4955,11 @@
       ],
       [
         60,
-        "core::traits::TIntoT::<dojo_starter::systems::button::button::Event>::into"
+        "core::traits::TIntoT::<frame_button::systems::button::button::Event>::into"
       ],
       [
         61,
-        "dojo_starter::systems::button::button::EventIsEvent::append_keys_and_data"
+        "frame_button::systems::button::button::EventIsEvent::append_keys_and_data"
       ],
       [
         62,
@@ -5046,11 +5046,11 @@
     {
       "type": "impl",
       "name": "ButtonImpl",
-      "interface_name": "dojo_starter::systems::button::IButton"
+      "interface_name": "frame_button::systems::button::IButton"
     },
     {
       "type": "struct",
-      "name": "dojo_starter::systems::button::ButtonDetails",
+      "name": "frame_button::systems::button::ButtonDetails",
       "members": [
         {
           "name": "times_pressed",
@@ -5082,7 +5082,7 @@
     },
     {
       "type": "struct",
-      "name": "dojo_starter::models::buttonPress::ButtonPress",
+      "name": "frame_button::models::buttonPress::ButtonPress",
       "members": [
         {
           "name": "player",
@@ -5100,7 +5100,7 @@
     },
     {
       "type": "interface",
-      "name": "dojo_starter::systems::button::IButton",
+      "name": "frame_button::systems::button::IButton",
       "items": [
         {
           "type": "function",
@@ -5120,7 +5120,7 @@
           "inputs": [],
           "outputs": [
             {
-              "type": "dojo_starter::systems::button::ButtonDetails"
+              "type": "frame_button::systems::button::ButtonDetails"
             }
           ],
           "state_mutability": "view"
@@ -5136,7 +5136,7 @@
           ],
           "outputs": [
             {
-              "type": "dojo_starter::models::buttonPress::ButtonPress"
+              "type": "frame_button::models::buttonPress::ButtonPress"
             }
           ],
           "state_mutability": "view"
@@ -5203,7 +5203,7 @@
     },
     {
       "type": "event",
-      "name": "dojo_starter::systems::button::button::Event",
+      "name": "frame_button::systems::button::button::Event",
       "kind": "enum",
       "variants": [
         {

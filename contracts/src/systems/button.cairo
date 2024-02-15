@@ -1,4 +1,4 @@
-use dojo_starter::models::buttonPress::{Button, ButtonPress};
+use frame_button::models::buttonPress::{Button, ButtonPress};
 
 #[derive(Drop, Serde, Copy)]
 struct ButtonDetails {
@@ -23,7 +23,7 @@ mod button {
     use super::{IButton, CURRENT_SEASON, SECONDS_TO_PRESS, ButtonDetails};
 
     use starknet::{get_block_timestamp};
-    use dojo_starter::models::buttonPress::{Button, ButtonPress};
+    use frame_button::models::buttonPress::{Button, ButtonPress};
 
     #[abi(embed_v0)]
     impl ButtonImpl of IButton<ContractState> {
