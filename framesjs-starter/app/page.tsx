@@ -18,10 +18,7 @@ import { DojoProvider } from "@dojoengine/core";
 import { getUserDataForFid } from "frames.js";
 import { dojoConfig } from "../dojoConfig";
 
-export const dojoProvider = new DojoProvider(
-  dojoConfig.manifest,
-  dojoConfig.rpcUrl
-);
+const dojoProvider = new DojoProvider(dojoConfig.manifest, dojoConfig.rpcUrl);
 
 const VT323 = join(process.cwd(), "public/VT323-Regular.ttf");
 let interReg = fs.readFileSync(VT323);
