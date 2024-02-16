@@ -213,6 +213,51 @@ export default async function Home({ searchParams }: NextServerPageProps) {
             }
 
             return (
+              <div tw="flex flex-col justify-center items-center w-4/5">
+                <span
+                  tw="mb-16 text-[96px] text-[#23380F]"
+                  style={{ fontFamily: "VT323" }}
+                >
+                  YOU ARE DONE.
+                </span>
+                <img
+                  src="http://localhost:3000/Button-Graphic-Pressed.png"
+                  tw="mb-16 w-[400px] h-[272px]"
+                />
+                <span tw="mb-6 text-[60px] text-[#839671] leading-[2] text-center">
+                  You have already pressed the button and it cannot be
+                  unpressed...
+                </span>
+              </div>
+            );
+
+            return (
+              <div tw="flex flex-col justify-center items-center">
+                <span
+                  tw="mb-24 text-[96px] text-[#23380F]"
+                  style={{ fontFamily: "VT323" }}
+                >
+                  DISASTER AVERTED!
+                </span>
+                <img
+                  src="http://localhost:3000/Button-Graphic.png"
+                  tw="mb-16 w-[400px] h-[272px]"
+                />
+                <span tw="mb-6 text-[60px] text-[#23380F]">
+                  You pressed the button at...
+                </span>
+                <div tw="flex flex-col py-1 px-3 rounded-xl border-[#23380F] border-4">
+                  <span
+                    tw="text-[60px] text-[#23380F]"
+                    style={{ fontFamily: "VT323" }}
+                  >
+                    14m 50s
+                  </span>
+                </div>
+              </div>
+            );
+
+            return (
               <div tw="flex flex-col justify-center items-stretch w-full h-full">
                 <div tw="flex flex-row justify-between mb-10">
                   <div tw="flex flex-col w-[70%]">
