@@ -22,6 +22,8 @@ const dojoProvider = new DojoProvider(dojoConfig.manifest, dojoConfig.rpcUrl);
 
 const VT323 = join(process.cwd(), "public/VT323-Regular.ttf");
 let interReg = fs.readFileSync(VT323);
+const NeueBitFile = join(process.cwd(), "public/NeueBit-Regular.ttf");
+let neueBitRegular = fs.readFileSync(NeueBitFile);
 
 type State = {
   sup: boolean;
@@ -253,12 +255,18 @@ export default async function Home({ searchParams }: NextServerPageProps) {
       <FrameImage
         aspectRatio="1:1"
         options={{
-          width: 1146,
-          height: 1146,
+          width: 1140,
+          height: 1140,
           fonts: [
             {
               name: "Inter",
               data: interReg,
+              weight: 400,
+              style: "normal",
+            },
+            {
+              name: "NeueBit",
+              data: neueBitRegular,
               weight: 400,
               style: "normal",
             },
@@ -268,42 +276,37 @@ export default async function Home({ searchParams }: NextServerPageProps) {
         <div
           style={{
             display: "flex",
-            flexDirection: "row",
-            alignItems: "stretch",
+            flexDirection: "column",
+            alignItems: "center",
             width: "100%",
             height: "100vh",
-            backgroundColor: "black",
+            backgroundColor: "#E2F3D2",
             color: "white",
+            justifyContent: "center",
           }}
         >
-          <div tw="flex text-6xl flex-col py-0 px-12 text-[#49f627]">
-            <h1 tw="mb-0">Press the button</h1>
-            <p tw="mb-0">
-              If this button isn&apos;t pressed for 15 minutes, it will be the
-              end of the world. Help us save the world by pressing the button.
-              You only get one press. Use it wisely.
+          <img
+            src="http://localhost:3000/Frame.png"
+            style={{ position: "absolute" }}
+          />
+          <img
+            src="http://localhost:3000/Button-Graphic.png"
+            width="400px"
+            height="272px"
+            tw="mb-10"
+          />
+          <div tw="flex flex-col">
+            <p
+              tw="mb-[-40] text-[60px] text-[#839671]"
+              style={{ fontFamily: "NeueBit" }}
+            >
+              Welcome to...
             </p>
-            <p tw="mb-0">Times pressed: {Number(buttonDetails[0])}</p>
-            <p tw="mb-0">Countdown - {secondsToCountdownString(secondsLeft)}</p>
-            {leaderboardData.length > 0 && (
-              <div tw="mt-auto flex flex-col mb-6">
-                <h3 tw="mb-0">Greatest heroes</h3>
-                {leaderboardData.map((leaderboard: any, index: number) => {
-                  return (
-                    <span key={index}>
-                      {index + 1}. {leaderboard.player} -{" "}
-                      {leaderboard.time_remaining}
-                    </span>
-                  );
-                })}
-              </div>
-            )}
+            <p tw="mb-0 text-[96px] text-[#23380F]">The Button Game</p>
           </div>
         </div>
       </FrameImage>
-      {Number(buttonDetails[1]) > 0 && (
-        <FrameButton onClick={dispatch}>💾 SAVE THE WORLD 💾</FrameButton>
-      )}
+      <FrameButton onClick={dispatch}>PLAY</FrameButton>
     </FrameContainer>
   );
 }
