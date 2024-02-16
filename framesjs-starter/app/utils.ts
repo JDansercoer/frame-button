@@ -7,10 +7,10 @@ export const secondsToCountdownString = (seconds: number) => {
   return `${minutes}m ${remainingSeconds}s`;
 };
 
-const VT323 = join(process.cwd(), "public/VT323-Regular.ttf");
-let interReg = fs.readFileSync(VT323);
+const VT323File = join(process.cwd(), "public/VT323-Regular.ttf");
+let vt3232Regular = fs.readFileSync(VT323File);
 const NeueBitFile = join(process.cwd(), "public/PPNeueBit-Bold.otf");
-let neueBitRegular = fs.readFileSync(NeueBitFile);
+let neueBitBold = fs.readFileSync(NeueBitFile);
 
 const aspectRatio = "1:1" as const;
 
@@ -21,15 +21,15 @@ export const frameImageProps = {
     height: 1140,
     fonts: [
       {
-        name: "Inter",
-        data: interReg,
-        weight: 400 as const,
+        name: "NeueBit",
+        data: neueBitBold,
+        weight: 700 as const,
         style: "normal" as const,
       },
       {
-        name: "NeueBit",
-        data: neueBitRegular,
-        weight: 700 as const,
+        name: "VT323",
+        data: vt3232Regular,
+        weight: 400 as const,
         style: "normal" as const,
       },
     ],
