@@ -12,4 +12,5 @@ struct Button {
     season: u8,
     last_pressed: u64,
     times_pressed: u64,
+    seconds_to_press: u32,
 }

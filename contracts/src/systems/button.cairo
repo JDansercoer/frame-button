@@ -51,6 +51,7 @@ mod button {
 
             button.last_pressed = get_block_timestamp();
             button.times_pressed += 1;
+            button.seconds_to_press = SECONDS_TO_PRESS;
 
             set!(world, (button));
         }

@@ -1,7 +1,4 @@
-import * as fs from "fs";
-import { join } from "path";
 import { Account } from "starknet";
-import { addSeconds, differenceInSeconds, fromUnixTime } from "date-fns";
 import {
   FrameButton,
   FrameContainer,
@@ -14,16 +11,12 @@ import {
   validateActionSignature,
 } from "frames.js/next/server";
 import { DEBUG_HUB_OPTIONS } from "./debug/constants";
-import { DojoProvider } from "@dojoengine/core";
-import { getUserDataForFid } from "frames.js";
-import { dojoConfig } from "../dojoConfig";
-
-const dojoProvider = new DojoProvider(dojoConfig.manifest, dojoConfig.rpcUrl);
-
-const VT323 = join(process.cwd(), "public/VT323-Regular.ttf");
-let interReg = fs.readFileSync(VT323);
-const NeueBitFile = join(process.cwd(), "public/NeueBit-Regular.ttf");
-let neueBitRegular = fs.readFileSync(NeueBitFile);
+import {
+  frameImageProps,
+  frameboyWrapperClasses,
+  secondsToCountdownString,
+} from "./utils";
+import { dojoProvider } from "./data";
 
 type State = {
   sup: boolean;
@@ -36,12 +29,6 @@ const fakeAccount = new Account(
   process.env.NEXT_PUBLIC_MASTER_ADDRESS,
   process.env.NEXT_PUBLIC_MASTER_PRIVATE_KEY
 );
-
-const secondsToCountdownString = (seconds: number) => {
-  const minutes = Math.trunc(seconds / 60);
-  const remainingSeconds = seconds % 60;
-  return `${minutes}m ${remainingSeconds}s`;
-};
 
 const reducer: FrameReducer<State> = (state, action) => {
   return state;
@@ -180,71 +167,6 @@ export default async function Home({ searchParams }: NextServerPageProps) {
     );
   }
 
-  const { result: buttonDetails } = await dojoProvider.call(
-    "button",
-    "get_details"
-  );
-
-  const secondsLeft = differenceInSeconds(
-    addSeconds(
-      fromUnixTime(Number(buttonDetails[1])),
-      Number(buttonDetails[2])
-    ),
-    new Date()
-  );
-
-  const leaderboardCall = async () => {
-    const response = await fetch(dojoConfig.toriiUrl + "/graphql", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        // Include other headers as needed, for example, authorization headers
-      },
-      body: JSON.stringify({
-        query: `
-        {
-            buttonPressModels(order: {field: TIME_REMAINING, direction:ASC}, limit: 5) {
-            edges {
-                node {
-                player
-                time_remaining
-                }
-            }
-            }
-        }
-      `,
-      }),
-    });
-
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-
-    const data = await response.json();
-
-    const resolvedDataPromises = data.data.buttonPressModels.edges.map(
-      async (edge) => {
-        const userData = await getUserDataForFid(edge.node.player);
-
-        if (!userData) {
-          return {
-            player: "Unknown",
-            time_remaining: secondsToCountdownString(edge.node.time_remaining),
-          };
-        }
-
-        const name = userData.username;
-        return {
-          player: name,
-          time_remaining: secondsToCountdownString(edge.node.time_remaining),
-        };
-      }
-    );
-
-    return Promise.all(resolvedDataPromises);
-  };
-  const leaderboardData = await leaderboardCall();
-
   return (
     <FrameContainer
       postUrl="/frames"
@@ -252,48 +174,12 @@ export default async function Home({ searchParams }: NextServerPageProps) {
       state={state}
       previousFrame={previousFrame}
     >
-      <FrameImage
-        aspectRatio="1:1"
-        options={{
-          width: 1140,
-          height: 1140,
-          fonts: [
-            {
-              name: "Inter",
-              data: interReg,
-              weight: 400,
-              style: "normal",
-            },
-            {
-              name: "NeueBit",
-              data: neueBitRegular,
-              weight: 400,
-              style: "normal",
-            },
-          ],
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            width: "100%",
-            height: "100vh",
-            backgroundColor: "#E2F3D2",
-            color: "white",
-            justifyContent: "center",
-          }}
-        >
-          <img
-            src="http://localhost:3000/Frame.png"
-            style={{ position: "absolute" }}
-          />
+      <FrameImage {...frameImageProps}>
+        <img src="http://localhost:3000/Frame.png" tw="absolute inset-0" />
+        <div tw={frameboyWrapperClasses}>
           <img
             src="http://localhost:3000/Button-Graphic.png"
-            width="400px"
-            height="272px"
-            tw="mb-10"
+            tw="mb-10 w-[400px] h-[272px]"
           />
           <div tw="flex flex-col">
             <p

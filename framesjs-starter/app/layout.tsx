@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  // without a title, warpcast won't validate your frame
-  title: "Frame Button",
+  title: "The Button Game",
   description: "...",
 };
 
