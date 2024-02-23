@@ -12,6 +12,7 @@ trait IButton<TContractState> {
     fn press(self: @TContractState, player_id: u32);
     fn get_details(self: @TContractState) -> ButtonDetails;
     fn get_button_press(self: @TContractState, player_id: u32) -> ButtonPress;
+    fn initialize(self: @TContractState);
 }
 
 const CURRENT_SEASON: u8 = 1;
@@ -36,18 +37,18 @@ mod button {
 
             let mut button = get!(world, CURRENT_SEASON, (Button));
 
-            if (button.times_pressed > 0) {
-                assert(
-                    button.last_pressed + (SECONDS_TO_PRESS).into() > get_block_timestamp(),
-                    'The world has ended'
-                );
+            assert(button.last_pressed > 0, 'The button has not spawned yet');
 
-                let time_remaining: u64 = button.last_pressed
-                    + (SECONDS_TO_PRESS).into()
-                    - get_block_timestamp();
+            assert(
+                button.last_pressed + (SECONDS_TO_PRESS).into() > get_block_timestamp(),
+                'The world has ended'
+            );
 
-                set!(world, (ButtonPress { player: player_id, pressed: true, time_remaining }));
-            }
+            let time_remaining: u64 = button.last_pressed
+                + (SECONDS_TO_PRESS).into()
+                - get_block_timestamp();
+
+            set!(world, (ButtonPress { player: player_id, pressed: true, time_remaining }));
 
             button.last_pressed = get_block_timestamp();
             button.times_pressed += 1;
@@ -77,5 +78,29 @@ mod button {
 
             get!(world, player_id, (ButtonPress))
         }
+
+        fn initialize(self: @ContractState) {
+            let world = self.world_dispatcher.read();
+
+            assert(
+                get!(world, CURRENT_SEASON, (Button)).last_pressed == 0,
+                'Button already initialized'
+            );
+
+            set!(
+                world,
+                (Button {
+                    season: CURRENT_SEASON,
+                    times_pressed: 0,
+                    last_pressed: get_block_timestamp(),
+                    seconds_to_press: SECONDS_TO_PRESS
+                })
+            );
+        }
     }
 }
+// | Account address |  0xb3ff441a68610b30fd5e2abbf3a1548eb6ba6f3559f2862bf2dc757e5828ca
+// | Private key     |  0x2bbf4f9fd0bbb2e60b0316c1fe0b76cf7a4d0198bd493ced9b8df2a3a24d68a
+// | Public key      |  0x640466ebd2ce505209d3e5c4494b4276ed8f1cde764d757eb48831961f7cdea
+
+

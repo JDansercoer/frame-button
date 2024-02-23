@@ -949,7 +949,7 @@
     {
       "name": "frame_button::systems::button::button",
       "address": "0x1e12921dc0ec50d281f5e307d7d6b06e5d522c11ea54b1f05bacc1e9ce61c55",
-      "class_hash": "0x31cb8648802258392666ebfc1f44b09773c9ec20c17a47824d2c74267be68eb",
+      "class_hash": "0x1061cbd7e09907080c72fc6169fb75faec2301c233234b354f1c8da2580b1d4",
       "abi": [
         {
           "type": "impl",
@@ -1079,6 +1079,13 @@
                   "type": "frame_button::models::buttonPress::ButtonPress"
                 }
               ],
+              "state_mutability": "view"
+            },
+            {
+              "type": "function",
+              "name": "initialize",
+              "inputs": [],
+              "outputs": [],
               "state_mutability": "view"
             }
           ]

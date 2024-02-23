@@ -42,7 +42,7 @@ export const getLeaderboard = async (): Promise<
 
   const resolvedDataPromises = data.data.buttonPressModels.edges.map(
     async (edge) => {
-      const userData = await getUserDataForFid(edge.node.player);
+      const userData = await getUserDataForFid({ fid: edge.node.player });
 
       if (!userData) {
         return {

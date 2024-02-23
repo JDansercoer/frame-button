@@ -22,6 +22,7 @@ import {
   pressButton,
 } from "./data";
 import { addSeconds, differenceInSeconds } from "date-fns";
+import { dojoProvider } from "./provider";
 
 type State = {
   screen: "home" | "overview" | "button";
@@ -164,7 +165,7 @@ export default async function Home({ searchParams }: NextServerPageProps) {
                     })}
                     <div tw="h-1 w-full bg-[#C7D7B7] my-10" />
                     <div tw="flex flex-row text-[60px] text-[#839671]">
-                      <span tw="w-1/5">-</span>
+                      <span tw="w-1/5"></span>
                       <span tw="mr-auto">RareSecond (you)</span>
                       <span tw="w-1/5">???</span>
                     </div>
@@ -198,7 +199,9 @@ export default async function Home({ searchParams }: NextServerPageProps) {
                         tw="text-[60px] text-[#23380F]"
                         style={{ fontFamily: "VT323" }}
                       >
-                        14m 50s
+                        {secondsToCountdownString(
+                          updatedPlayerStats?.time_remaining || 0
+                        )}
                       </span>
                     </div>
                   </div>
