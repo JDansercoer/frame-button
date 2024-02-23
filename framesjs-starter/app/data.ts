@@ -3,13 +3,16 @@ import { getUserDataForFid } from "frames.js";
 import { dojoConfig } from "../dojoConfig";
 import { secondsToCountdownString } from "./utils";
 import { fromUnixTime } from "date-fns";
+import { Account } from "starknet";
 
 export const dojoProvider = new DojoProvider(
   dojoConfig.manifest,
   dojoConfig.rpcUrl
 );
 
-export const getLeaderboard = async () => {
+export const getLeaderboard = async (): Promise<
+  Array<{ player: string; time_remaining: string }>
+> => {
   const response = await fetch(dojoConfig.toriiUrl + "/graphql", {
     method: "POST",
     headers: {
@@ -64,7 +67,6 @@ export const getButtonStats = async () => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      // Include other headers as needed, for example, authorization headers
     },
     body: JSON.stringify({
       query: `
@@ -74,6 +76,7 @@ export const getButtonStats = async () => {
                 node {
                   last_pressed
                   times_pressed
+                  seconds_to_press
                 }
               }
             }
@@ -92,6 +95,7 @@ export const getButtonStats = async () => {
     return {
       lastPressed: new Date(),
       timesPressed: 0,
+      secondsToPress: 0,
     };
   }
 
@@ -100,5 +104,62 @@ export const getButtonStats = async () => {
   return {
     lastPressed: fromUnixTime(currentButton.last_pressed),
     timesPressed: currentButton.times_pressed,
+    secondsToPress: currentButton.seconds_to_press,
   };
+};
+
+export const getPlayerStats = async (
+  player: number
+): Promise<null | { time_remaining: number }> => {
+  const response = await fetch(dojoConfig.toriiUrl + "/graphql", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      query: `
+      query GetPlayerStats($player: Int) {
+        buttonPressModels(where: {player: $player}) {
+          edges {
+            node {
+              time_remaining
+            }
+          }
+        }
+      }
+            `,
+      variables: {
+        player,
+      },
+    }),
+  });
+
+  if (!response.ok) {
+    throw new Error("Network response was not ok");
+  }
+
+  const data = await response.json();
+
+  return data.data.buttonPressModels.edges[0]
+    ? (data.data.buttonPressModels.edges[0].node as { time_remaining: number })
+    : null;
+};
+
+export const pressButton = async (player: number) => {
+  const fakeAccount = new Account(
+    dojoProvider.provider,
+    process.env.NEXT_PUBLIC_MASTER_ADDRESS || "",
+    process.env.NEXT_PUBLIC_MASTER_PRIVATE_KEY || ""
+  );
+
+  const pressTransaction = await dojoProvider.execute(
+    fakeAccount,
+    "button",
+    "press",
+    [player]
+  );
+
+  await fakeAccount.waitForTransaction(pressTransaction.transaction_hash, {
+    retryInterval: 100,
+  });
 };
