@@ -23,6 +23,7 @@ import {
 } from "./data";
 import { addSeconds, differenceInSeconds } from "date-fns";
 import { dojoProvider } from "./provider";
+import { getUserDataForFid } from "frames.js";
 
 type State = {
   screen: "home" | "overview" | "button";
@@ -133,7 +134,7 @@ export default async function Home({ searchParams }: NextServerPageProps) {
                   return {
                     title: "Pressed...",
                     description: `You did your part and pressed the button with ${secondsToCountdownString(
-                      playerStats.time_remaining || 0
+                      playerStats.time_remaining
                     )} left to spare. You may rest.`,
                     buttonLink: `${process.env.NEXT_PUBLIC_BASE_URL}/Button-Graphic-Pressed.png`,
                   };
@@ -146,6 +147,8 @@ export default async function Home({ searchParams }: NextServerPageProps) {
                   buttonLink: `${process.env.NEXT_PUBLIC_BASE_URL}/Button-Graphic.png`,
                 };
               })();
+
+              const userData = await getUserDataForFid({ fid: playerId });
 
               return (
                 <div tw="flex flex-col justify-center items-stretch w-full h-full">
@@ -210,8 +213,12 @@ export default async function Home({ searchParams }: NextServerPageProps) {
                     <div tw="h-1 w-full bg-[#C7D7B7] my-10" />
                     <div tw="flex flex-row text-[60px] text-[#839671]">
                       <span tw="w-1/5"></span>
-                      <span tw="mr-auto">RareSecond (you)</span>
-                      <span tw="w-1/5">???</span>
+                      <span tw="mr-auto">{userData?.username} (you)</span>
+                      <span tw="w-1/5">
+                        {playerStats
+                          ? secondsToCountdownString(playerStats.time_remaining)
+                          : "???"}
+                      </span>
                     </div>
                   </div>
                 </div>
