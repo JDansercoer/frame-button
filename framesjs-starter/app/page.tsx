@@ -70,14 +70,17 @@ export default async function Home({ searchParams }: NextServerPageProps) {
       previousFrame={previousFrame}
     >
       <FrameImage {...frameImageProps}>
-        <img src="http://localhost:3000/Frame.png" tw="absolute inset-0" />
+        <img
+          src={`${process.env.NEXT_PUBLIC_BASE_URL}/Frame.png`}
+          tw="absolute inset-0"
+        />
         <div tw={frameboyWrapperClasses}>
           {await (async () => {
             if (!frameMessage) {
               return (
                 <div tw="flex flex-col justify-center items-center">
                   <img
-                    src="http://localhost:3000/Button-Graphic.png"
+                    src={`${process.env.NEXT_PUBLIC_BASE_URL}/Button-Graphic.png`}
                     tw="mb-10 w-[400px] h-[272px]"
                   />
                   <div tw="flex flex-col">
@@ -98,33 +101,64 @@ export default async function Home({ searchParams }: NextServerPageProps) {
             const playerId = frameMessage.requesterFid;
 
             const playerStats = await getPlayerStats(playerId);
+            const buttonStats = await getButtonStats();
+
+            if (!buttonStats.lastPressed) {
+              return (
+                <span tw="text-[60px] text-[#23380F]">
+                  The button isn&apos;t active yet.
+                </span>
+              );
+            }
+
+            const isGameOver =
+              Math.abs(
+                differenceInSeconds(buttonStats.lastPressed, new Date())
+              ) > buttonStats.secondsToPress;
 
             if (state.screen === "overview") {
-              const buttonStats = await getButtonStats();
-
-              if (!buttonStats.lastPressed) {
-                return (
-                  <span tw="text-[60px] text-[#23380F]">
-                    The button isn&apos;t active yet.
-                  </span>
-                );
-              }
-
               const leaderboard = await getLeaderboard();
+
+              const homeDetails = (() => {
+                if (isGameOver) {
+                  return {
+                    title: "Game Over",
+                    description:
+                      "The button has exploded! The fire is largely contained but unfortunately very little of the button remains.",
+                    buttonLink: `${process.env.NEXT_PUBLIC_BASE_URL}/Button-Graphic-Exploded.png`,
+                  };
+                }
+
+                if (playerStats) {
+                  return {
+                    title: "Pressed...",
+                    description: `You did your part and pressed the button with ${secondsToCountdownString(
+                      playerStats.time_remaining || 0
+                    )} left to spare. You may rest.`,
+                    buttonLink: `${process.env.NEXT_PUBLIC_BASE_URL}/Button-Graphic-Pressed.png`,
+                  };
+                }
+
+                return {
+                  title: "Press the button!!!",
+                  description:
+                    "If the countdown reaches zero there will be terrible consequences! You only get one press. Use it wisely.",
+                  buttonLink: `${process.env.NEXT_PUBLIC_BASE_URL}/Button-Graphic.png`,
+                };
+              })();
 
               return (
                 <div tw="flex flex-col justify-center items-stretch w-full h-full">
                   <div tw="flex flex-row justify-between mb-10">
                     <div tw="flex flex-col w-[70%]">
                       <span
-                        tw="mb-12 text-[72px] text-[#23380F]"
+                        tw="mb-12 text-[72px] text-[#23380F] uppercase"
                         style={{ fontFamily: "VT323" }}
                       >
-                        {playerStats ? "PRESSED..." : "PRESS THE BUTTON!!!"}
+                        {homeDetails.title}
                       </span>
                       <span tw="mb-10 text-[56px] text-[#839671]">
-                        If the countdown reaches zero there will be terrible
-                        consequences! You only get one press. Use it wisely.
+                        {homeDetails.description}
                       </span>
                       <span tw="text-[60px] text-[#23380F]">
                         Total Pressed: {buttonStats.timesPressed} times
@@ -132,9 +166,7 @@ export default async function Home({ searchParams }: NextServerPageProps) {
                     </div>
                     <div tw="flex flex-col items-center">
                       <img
-                        src={`http://localhost:3000/Button-Graphic${
-                          playerStats ? "-Pressed" : ""
-                        }.png`}
+                        src={homeDetails.buttonLink}
                         tw="mb-8 w-[200px] h-[136px]"
                       />
                       <div tw="flex flex-col py-2 px-6 bg-[#23380F] rounded-3xl">
@@ -143,12 +175,15 @@ export default async function Home({ searchParams }: NextServerPageProps) {
                           style={{ fontFamily: "VT323" }}
                         >
                           {secondsToCountdownString(
-                            differenceInSeconds(
-                              addSeconds(
-                                buttonStats.lastPressed,
-                                buttonStats.secondsToPress
+                            Math.max(
+                              differenceInSeconds(
+                                addSeconds(
+                                  buttonStats.lastPressed,
+                                  buttonStats.secondsToPress
+                                ),
+                                new Date()
                               ),
-                              new Date()
+                              0
                             )
                           )}
                         </span>
@@ -184,6 +219,26 @@ export default async function Home({ searchParams }: NextServerPageProps) {
             }
 
             if (state.screen === "button") {
+              if (isGameOver) {
+                return (
+                  <div tw="flex flex-col justify-center items-center w-4/5">
+                    <span
+                      tw="mb-16 text-[96px] text-[#23380F]"
+                      style={{ fontFamily: "VT323" }}
+                    >
+                      DISASTER STRUCK!
+                    </span>
+                    <img
+                      src={`${process.env.NEXT_PUBLIC_BASE_URL}/Button-Graphic-Exploded.png`}
+                      tw="mb-16 w-[400px] h-[272px]"
+                    />
+                    <span tw="mb-6 text-[60px] text-[#839671] leading-[2] text-center">
+                      The button has exploded, it can no longer be pressed...
+                    </span>
+                  </div>
+                );
+              }
+
               if (!playerStats) {
                 await pressButton(playerId);
                 const updatedPlayerStats = await getPlayerStats(playerId);
@@ -197,7 +252,7 @@ export default async function Home({ searchParams }: NextServerPageProps) {
                       DISASTER AVERTED!
                     </span>
                     <img
-                      src="http://localhost:3000/Button-Graphic.png"
+                      src={`${process.env.NEXT_PUBLIC_BASE_URL}/Button-Graphic.png`}
                       tw="mb-16 w-[400px] h-[272px]"
                     />
                     <span tw="mb-6 text-[60px] text-[#23380F]">
@@ -226,7 +281,7 @@ export default async function Home({ searchParams }: NextServerPageProps) {
                     YOU ARE DONE.
                   </span>
                   <img
-                    src="http://localhost:3000/Button-Graphic-Pressed.png"
+                    src={`${process.env.NEXT_PUBLIC_BASE_URL}/Button-Graphic-Pressed.png`}
                     tw="mb-16 w-[400px] h-[272px]"
                   />
                   <span tw="mb-6 text-[60px] text-[#839671] leading-[2] text-center">

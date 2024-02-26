@@ -4,7 +4,9 @@ import { join } from "path";
 export const secondsToCountdownString = (seconds: number) => {
   const minutes = Math.trunc(seconds / 60);
   const remainingSeconds = seconds % 60;
-  return `${minutes}m ${remainingSeconds}s`;
+  return `${minutes < 10 ? `0${minutes}` : minutes}m ${
+    remainingSeconds < 10 ? `0${remainingSeconds}` : remainingSeconds
+  }s`;
 };
 
 const VT323File = join(process.cwd(), "public/VT323-Regular.ttf");
