@@ -21,7 +21,7 @@ export const getLeaderboard = async (): Promise<
     body: JSON.stringify({
       query: `
             {
-                buttonPressModels(order: {field: TIME_REMAINING, direction:ASC}, limit: 5) {
+                buttonPressModels(order: {field: TIME_REMAINING, direction:ASC}, limit: 4) {
                 edges {
                     node {
                     player
