@@ -164,4 +164,10 @@ export const pressButton = async (player: number) => {
   await fakeAccount.waitForTransaction(pressTransaction.transaction_hash, {
     retryInterval: 100,
   });
+
+  const updatedPlayer = await dojoProvider.call("button", "get_button_press", [
+    player,
+  ]);
+
+  return Number(updatedPlayer.result[2]);
 };

@@ -260,8 +260,7 @@ export default async function Home({ searchParams }: NextServerPageProps) {
               }
 
               if (!playerStats) {
-                await pressButton(playerId);
-                const updatedPlayerStats = await getPlayerStats(playerId);
+                const timeRemaining = await pressButton(playerId);
 
                 return (
                   <div tw="flex flex-col justify-center items-center">
@@ -283,9 +282,7 @@ export default async function Home({ searchParams }: NextServerPageProps) {
                         tw="text-[60px] text-[#23380F]"
                         style={{ fontFamily: "VT323" }}
                       >
-                        {secondsToCountdownString(
-                          updatedPlayerStats?.time_remaining || 0
-                        )}
+                        {secondsToCountdownString(timeRemaining)}
                       </span>
                     </div>
                   </div>
