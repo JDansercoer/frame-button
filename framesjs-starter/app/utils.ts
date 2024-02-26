@@ -1,3 +1,4 @@
+import { Duration } from "date-fns";
 import * as fs from "fs";
 import { join } from "path";
 
@@ -7,6 +8,24 @@ export const secondsToCountdownString = (seconds: number) => {
   return `${minutes < 10 ? `0${minutes}` : minutes}m ${
     remainingSeconds < 10 ? `0${remainingSeconds}` : remainingSeconds
   }s`;
+};
+
+export const durationToString = (duration: Duration) => {
+  const firstNonZeroValueIndex = Object.values(duration).findIndex(
+    (value) => value > 0
+  );
+  const durationKeys = [
+    Object.keys(duration)[firstNonZeroValueIndex],
+    Object.keys(duration)[firstNonZeroValueIndex + 1],
+  ];
+
+  return durationKeys.reduce((acc, key) => {
+    if (key) {
+      return `${acc ? `${acc} ` : ""}${duration[key]}${key[0]}`;
+    }
+
+    return acc;
+  }, "");
 };
 
 const VT323File = join(process.cwd(), "public/VT323-Regular.ttf");

@@ -77,6 +77,7 @@ export const getButtonStats = async () => {
                   last_pressed
                   times_pressed
                   seconds_to_press
+                  initialized
                 }
               }
             }
@@ -105,6 +106,7 @@ export const getButtonStats = async () => {
     lastPressed: fromUnixTime(currentButton.last_pressed),
     timesPressed: currentButton.times_pressed,
     secondsToPress: currentButton.seconds_to_press,
+    initialized: fromUnixTime(currentButton.initialized),
   };
 };
 

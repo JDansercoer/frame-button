@@ -93,7 +93,8 @@ mod button {
                     season: CURRENT_SEASON,
                     times_pressed: 0,
                     last_pressed: get_block_timestamp(),
-                    seconds_to_press: SECONDS_TO_PRESS
+                    seconds_to_press: SECONDS_TO_PRESS,
+                    initialized: get_block_timestamp()
                 })
             );
         }

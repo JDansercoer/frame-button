@@ -949,7 +949,7 @@
     {
       "name": "frame_button::systems::button::button",
       "address": "0x1e12921dc0ec50d281f5e307d7d6b06e5d522c11ea54b1f05bacc1e9ce61c55",
-      "class_hash": "0x1061cbd7e09907080c72fc6169fb75faec2301c233234b354f1c8da2580b1d4",
+      "class_hash": "0x3a5face1774e79cbb518cc169915afd61f0c086695306d623918ba2e7c04061",
       "abi": [
         {
           "type": "impl",
@@ -1189,9 +1189,14 @@
           "name": "seconds_to_press",
           "type": "u32",
           "key": false
+        },
+        {
+          "name": "initialized",
+          "type": "u64",
+          "key": false
         }
       ],
-      "class_hash": "0x1af4cc12ef7d34779beb4aee1e4b999f8afd5281b244805d97039154b993eb1",
+      "class_hash": "0x707498f7c53b2bba9f4ef5e9923631052ce5dfd42ff134c0a0211c719ddce43",
       "abi": [
         {
           "type": "function",

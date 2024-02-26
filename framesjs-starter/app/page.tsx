@@ -11,6 +11,7 @@ import {
 } from "frames.js/next/server";
 import { DEBUG_HUB_OPTIONS } from "./debug/constants";
 import {
+  durationToString,
   frameImageProps,
   frameboyWrapperClasses,
   secondsToCountdownString,
@@ -21,7 +22,12 @@ import {
   getPlayerStats,
   pressButton,
 } from "./data";
-import { addSeconds, differenceInSeconds } from "date-fns";
+import {
+  addSeconds,
+  differenceInSeconds,
+  formatDuration,
+  intervalToDuration,
+} from "date-fns";
 import { dojoProvider } from "./provider";
 import { getUserDataForFid } from "frames.js";
 
@@ -149,6 +155,10 @@ export default async function Home({ searchParams }: NextServerPageProps) {
               })();
 
               const userData = await getUserDataForFid({ fid: playerId });
+              const buttonDuration = intervalToDuration({
+                start: buttonStats.initialized,
+                end: new Date(),
+              });
 
               return (
                 <div tw="flex flex-col justify-center items-stretch w-full h-full">
@@ -160,11 +170,14 @@ export default async function Home({ searchParams }: NextServerPageProps) {
                       >
                         {homeDetails.title}
                       </span>
-                      <span tw="mb-10 text-[56px] text-[#839671]">
+                      <span tw="mb-12 text-[56px] text-[#839671]">
                         {homeDetails.description}
                       </span>
-                      <span tw="text-[60px] text-[#23380F]">
+                      <span tw="text-[60px] mb-6 text-[#23380F]">
                         Total Pressed: {buttonStats.timesPressed} times
+                      </span>
+                      <span tw="text-[60px] text-[#23380F]">
+                        Time Survived: {durationToString(buttonDuration)}
                       </span>
                     </div>
                     <div tw="flex flex-col items-center">

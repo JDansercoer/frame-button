@@ -13,4 +13,5 @@ struct Button {
     last_pressed: u64,
     times_pressed: u64,
     seconds_to_press: u32,
+    initialized: u64,
 }
