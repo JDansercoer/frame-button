@@ -101,6 +101,15 @@ export default async function Home({ searchParams }: NextServerPageProps) {
 
             if (state.screen === "overview") {
               const buttonStats = await getButtonStats();
+
+              if (!buttonStats.lastPressed) {
+                return (
+                  <span tw="text-[60px] text-[#23380F]">
+                    The button isn&apos;t active yet.
+                  </span>
+                );
+              }
+
               const leaderboard = await getLeaderboard();
 
               return (

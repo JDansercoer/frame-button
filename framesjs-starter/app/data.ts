@@ -93,7 +93,7 @@ export const getButtonStats = async () => {
 
   if (!data.data.buttonModels.edges.length) {
     return {
-      lastPressed: new Date(),
+      lastPressed: undefined,
       timesPressed: 0,
       secondsToPress: 0,
     };
