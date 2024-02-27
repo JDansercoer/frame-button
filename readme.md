@@ -1,4 +1,6 @@
-![My Image](./button.png)
+<p align="center">
+  <img src="./button.png" />
+</p>
 
 A fully onchain Farcaster Frame game.
 
@@ -25,8 +27,8 @@ Run the following command
 Then in the `contracts` folder, run these commands
 
 - `sozo build`
-- `sozo migrate` (note down both the World address and the Button address from this output)
-- `./scripts/default-auth.sh`
+- `sozo migrate`
+- `./scripts/default-auth.sh` (note down both the World address and the Button address from this output)
 
 With the Button contract address, run
 
@@ -40,8 +42,9 @@ Then spin up Torii with your world address
 
 Copy `.env.example` inside `web` and rename it to `.env`. Fill in the missing values.
 
-`bun install`
+Then, also inside `web`, run:
 
-`bun dev`
+- `bun install`
+- `bun dev`
 
 Navigate to `http://localhost:3000/debug?url=http%3A%2F%2Flocalhost%3A3000` and you should see the home frame!
