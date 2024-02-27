@@ -31,13 +31,17 @@ type State = {
 
 const initialState: State = { screen: "home" };
 
-const reducer: FrameReducer<State> = (state) => {
+const reducer: FrameReducer<State> = (state, action) => {
   if (state.screen === "home") {
     return { screen: "overview" };
   }
 
   if (state.screen === "overview") {
-    return { screen: "button" };
+    if (action.postBody?.untrustedData.buttonIndex === 1) {
+      return { screen: "button" };
+    }
+
+    return { screen: "overview" };
   }
 
   if (state.screen === "button") {
@@ -318,6 +322,11 @@ export default async function Home({ searchParams }: NextServerPageProps) {
 
         return null;
       })()}
+      {/* I can't include it in the statement above, because frames.js currently doesn't 
+      like fragments */}
+      {state.screen === "overview" ? (
+        <FrameButton onClick={dispatch}>REFRESH</FrameButton>
+      ) : null}
     </FrameContainer>
   );
 }
