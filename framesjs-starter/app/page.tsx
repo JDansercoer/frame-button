@@ -22,13 +22,7 @@ import {
   getPlayerStats,
   pressButton,
 } from "./data";
-import {
-  addSeconds,
-  differenceInSeconds,
-  formatDuration,
-  intervalToDuration,
-} from "date-fns";
-import { dojoProvider } from "./provider";
+import { addSeconds, differenceInSeconds, intervalToDuration } from "date-fns";
 import { getUserDataForFid } from "frames.js";
 
 type State = {
