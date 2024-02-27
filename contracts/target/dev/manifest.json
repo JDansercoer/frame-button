@@ -949,8 +949,30 @@
     {
       "name": "frame_button::systems::button::button",
       "address": "0x1e12921dc0ec50d281f5e307d7d6b06e5d522c11ea54b1f05bacc1e9ce61c55",
-      "class_hash": "0x3a5face1774e79cbb518cc169915afd61f0c086695306d623918ba2e7c04061",
+      "class_hash": "0x333ba62cba1f360f60397e9688c5377fa734e5c741c2bb6061a0f8ab0aa6827",
       "abi": [
+        {
+          "type": "impl",
+          "name": "DojoResourceProviderImpl",
+          "interface_name": "dojo::world::IDojoResourceProvider"
+        },
+        {
+          "type": "interface",
+          "name": "dojo::world::IDojoResourceProvider",
+          "items": [
+            {
+              "type": "function",
+              "name": "dojo_resource",
+              "inputs": [],
+              "outputs": [
+                {
+                  "type": "core::felt252"
+                }
+              ],
+              "state_mutability": "view"
+            }
+          ]
+        },
         {
           "type": "impl",
           "name": "WorldProviderImpl",
@@ -1114,17 +1136,6 @@
           ]
         },
         {
-          "type": "function",
-          "name": "dojo_resource",
-          "inputs": [],
-          "outputs": [
-            {
-              "type": "core::felt252"
-            }
-          ],
-          "state_mutability": "view"
-        },
-        {
           "type": "event",
           "name": "dojo::components::upgradeable::upgradeable::Upgraded",
           "kind": "struct",
@@ -1196,40 +1207,12 @@
           "key": false
         }
       ],
-      "class_hash": "0x707498f7c53b2bba9f4ef5e9923631052ce5dfd42ff134c0a0211c719ddce43",
+      "class_hash": "0x76a0661ff3b66c0e09d8f2b1f1432ef49064b51afe3676933468f94d1913fc9",
       "abi": [
         {
-          "type": "function",
-          "name": "name",
-          "inputs": [],
-          "outputs": [
-            {
-              "type": "core::felt252"
-            }
-          ],
-          "state_mutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "unpacked_size",
-          "inputs": [],
-          "outputs": [
-            {
-              "type": "core::integer::u32"
-            }
-          ],
-          "state_mutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "packed_size",
-          "inputs": [],
-          "outputs": [
-            {
-              "type": "core::integer::u32"
-            }
-          ],
-          "state_mutability": "view"
+          "type": "impl",
+          "name": "DojoModelImpl",
+          "interface_name": "dojo::model::IDojoModel"
         },
         {
           "type": "struct",
@@ -1240,17 +1223,6 @@
               "type": "@core::array::Array::<core::integer::u8>"
             }
           ]
-        },
-        {
-          "type": "function",
-          "name": "layout",
-          "inputs": [],
-          "outputs": [
-            {
-              "type": "core::array::Span::<core::integer::u8>"
-            }
-          ],
-          "state_mutability": "view"
         },
         {
           "type": "struct",
@@ -1341,15 +1313,114 @@
           ]
         },
         {
-          "type": "function",
-          "name": "schema",
-          "inputs": [],
-          "outputs": [
+          "type": "interface",
+          "name": "dojo::model::IDojoModel",
+          "items": [
             {
-              "type": "dojo::database::introspect::Ty"
+              "type": "function",
+              "name": "name",
+              "inputs": [],
+              "outputs": [
+                {
+                  "type": "core::felt252"
+                }
+              ],
+              "state_mutability": "view"
+            },
+            {
+              "type": "function",
+              "name": "unpacked_size",
+              "inputs": [],
+              "outputs": [
+                {
+                  "type": "core::integer::u32"
+                }
+              ],
+              "state_mutability": "view"
+            },
+            {
+              "type": "function",
+              "name": "packed_size",
+              "inputs": [],
+              "outputs": [
+                {
+                  "type": "core::integer::u32"
+                }
+              ],
+              "state_mutability": "view"
+            },
+            {
+              "type": "function",
+              "name": "layout",
+              "inputs": [],
+              "outputs": [
+                {
+                  "type": "core::array::Span::<core::integer::u8>"
+                }
+              ],
+              "state_mutability": "view"
+            },
+            {
+              "type": "function",
+              "name": "schema",
+              "inputs": [],
+              "outputs": [
+                {
+                  "type": "dojo::database::introspect::Ty"
+                }
+              ],
+              "state_mutability": "view"
             }
-          ],
-          "state_mutability": "view"
+          ]
+        },
+        {
+          "type": "impl",
+          "name": "buttonImpl",
+          "interface_name": "frame_button::models::buttonPress::Ibutton"
+        },
+        {
+          "type": "struct",
+          "name": "frame_button::models::buttonPress::Button",
+          "members": [
+            {
+              "name": "season",
+              "type": "core::integer::u8"
+            },
+            {
+              "name": "last_pressed",
+              "type": "core::integer::u64"
+            },
+            {
+              "name": "times_pressed",
+              "type": "core::integer::u64"
+            },
+            {
+              "name": "seconds_to_press",
+              "type": "core::integer::u32"
+            },
+            {
+              "name": "initialized",
+              "type": "core::integer::u64"
+            }
+          ]
+        },
+        {
+          "type": "interface",
+          "name": "frame_button::models::buttonPress::Ibutton",
+          "items": [
+            {
+              "type": "function",
+              "name": "ensure_abi",
+              "inputs": [
+                {
+                  "name": "model",
+                  "type": "frame_button::models::buttonPress::Button"
+                }
+              ],
+              "outputs": [],
+              "state_mutability": "view"
+            }
+          ]
         },
         {
           "type": "event",
@@ -1378,40 +1449,12 @@
           "key": false
         }
       ],
-      "class_hash": "0x284666638bdd630206d4d51fe062dfaa9463d943f8d887bc9f0783f32651954",
+      "class_hash": "0x1e5efc5d65e76041ac7de3f4e81c658d8e5d1305474741ba564ded00dcb2b1a",
       "abi": [
         {
-          "type": "function",
-          "name": "name",
-          "inputs": [],
-          "outputs": [
-            {
-              "type": "core::felt252"
-            }
-          ],
-          "state_mutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "unpacked_size",
-          "inputs": [],
-          "outputs": [
-            {
-              "type": "core::integer::u32"
-            }
-          ],
-          "state_mutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "packed_size",
-          "inputs": [],
-          "outputs": [
-            {
-              "type": "core::integer::u32"
-            }
-          ],
-          "state_mutability": "view"
+          "type": "impl",
+          "name": "DojoModelImpl",
+          "interface_name": "dojo::model::IDojoModel"
         },
         {
           "type": "struct",
@@ -1422,17 +1465,6 @@
               "type": "@core::array::Array::<core::integer::u8>"
             }
           ]
-        },
-        {
-          "type": "function",
-          "name": "layout",
-          "inputs": [],
-          "outputs": [
-            {
-              "type": "core::array::Span::<core::integer::u8>"
-            }
-          ],
-          "state_mutability": "view"
         },
         {
           "type": "struct",
@@ -1523,15 +1555,120 @@
           ]
         },
         {
-          "type": "function",
-          "name": "schema",
-          "inputs": [],
-          "outputs": [
+          "type": "interface",
+          "name": "dojo::model::IDojoModel",
+          "items": [
             {
-              "type": "dojo::database::introspect::Ty"
+              "type": "function",
+              "name": "name",
+              "inputs": [],
+              "outputs": [
+                {
+                  "type": "core::felt252"
+                }
+              ],
+              "state_mutability": "view"
+            },
+            {
+              "type": "function",
+              "name": "unpacked_size",
+              "inputs": [],
+              "outputs": [
+                {
+                  "type": "core::integer::u32"
+                }
+              ],
+              "state_mutability": "view"
+            },
+            {
+              "type": "function",
+              "name": "packed_size",
+              "inputs": [],
+              "outputs": [
+                {
+                  "type": "core::integer::u32"
+                }
+              ],
+              "state_mutability": "view"
+            },
+            {
+              "type": "function",
+              "name": "layout",
+              "inputs": [],
+              "outputs": [
+                {
+                  "type": "core::array::Span::<core::integer::u8>"
+                }
+              ],
+              "state_mutability": "view"
+            },
+            {
+              "type": "function",
+              "name": "schema",
+              "inputs": [],
+              "outputs": [
+                {
+                  "type": "dojo::database::introspect::Ty"
+                }
+              ],
+              "state_mutability": "view"
             }
-          ],
-          "state_mutability": "view"
+          ]
+        },
+        {
+          "type": "impl",
+          "name": "button_pressImpl",
+          "interface_name": "frame_button::models::buttonPress::Ibutton_press"
+        },
+        {
+          "type": "enum",
+          "name": "core::bool",
+          "variants": [
+            {
+              "name": "False",
+              "type": "()"
+            },
+            {
+              "name": "True",
+              "type": "()"
+            }
+          ]
+        },
+        {
+          "type": "struct",
+          "name": "frame_button::models::buttonPress::ButtonPress",
+          "members": [
+            {
+              "name": "player",
+              "type": "core::integer::u32"
+            },
+            {
+              "name": "pressed",
+              "type": "core::bool"
+            },
+            {
+              "name": "time_remaining",
+              "type": "core::integer::u64"
+            }
+          ]
+        },
+        {
+          "type": "interface",
+          "name": "frame_button::models::buttonPress::Ibutton_press",
+          "items": [
+            {
+              "type": "function",
+              "name": "ensure_abi",
+              "inputs": [
+                {
+                  "name": "model",
+                  "type": "frame_button::models::buttonPress::ButtonPress"
+                }
+              ],
+              "outputs": [],
+              "state_mutability": "view"
+            }
+          ]
         },
         {
           "type": "event",
