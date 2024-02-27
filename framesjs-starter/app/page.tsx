@@ -22,7 +22,12 @@ import {
   getPlayerStats,
   pressButton,
 } from "./data";
-import { addSeconds, differenceInSeconds, intervalToDuration } from "date-fns";
+import {
+  addSeconds,
+  differenceInSeconds,
+  intervalToDuration,
+  min,
+} from "date-fns";
 import { getUserDataForFid } from "frames.js";
 
 type State = {
@@ -155,7 +160,16 @@ export default async function Home({ searchParams }: NextServerPageProps) {
               const userData = await getUserDataForFid({ fid: playerId });
               const buttonDuration = intervalToDuration({
                 start: buttonStats.initialized,
-                end: new Date(),
+                // If the button is active, the end is the current time
+                // If the button is not active, the end is the last time it was pressed
+                // plus the maximum allowed countdown
+                end: min([
+                  new Date(),
+                  addSeconds(
+                    buttonStats.lastPressed,
+                    buttonStats.secondsToPress
+                  ),
+                ]),
               });
 
               return (
