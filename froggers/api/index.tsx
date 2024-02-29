@@ -1,6 +1,7 @@
 import { Frog } from "frog";
 import { handle } from "frog/vercel";
-import { homeFrame } from "../screens/Home.js";
+import { homeFrame } from "../screens/Home";
+import { overviewFrame } from "../screens/Overview";
 
 // Uncomment to use Edge Runtime.
 // export const config = {
@@ -14,6 +15,7 @@ export const app = new Frog({
 });
 
 homeFrame();
+overviewFrame();
 
 export const GET = handle(app);
 export const POST = handle(app);
