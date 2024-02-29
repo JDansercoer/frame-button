@@ -152,7 +152,7 @@ export const overviewFrame = () => {
           </div>
         </Wrapper>
       ),
-      intents: [<Button>Play</Button>],
+      intents: [<Button>Refresh</Button>],
       ...defaultImageOptions,
     });
   });
