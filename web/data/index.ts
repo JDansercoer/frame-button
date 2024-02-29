@@ -1,6 +1,6 @@
 import { DojoProvider } from "@dojoengine/core";
 import { getUserDataForFid } from "frames.js";
-import { dojoConfig } from "../dojoConfig";
+import { dojoConfig } from "./dojoConfig";
 import { fromUnixTime } from "date-fns";
 import { Account } from "starknet";
 import { secondsToCountdownString } from "../utils";

@@ -1,8 +1,8 @@
 import { Button } from "frog";
 import { defaultImageOptions } from "../utils/defaultImageOptions";
 import { button } from "../images";
-import { app } from "../api";
-import { Wrapper } from "../Wrapper";
+import { app } from ".";
+import { Wrapper } from "./components/Wrapper";
 import { pressButton } from "../data";
 import { secondsToCountdownString } from "../utils";
 

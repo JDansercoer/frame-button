@@ -1,4 +1,4 @@
-import { frame } from "./images";
+import { frame } from "../../images";
 
 export const Wrapper = ({ children }: { children: any }) => {
   return (

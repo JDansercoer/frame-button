@@ -1,7 +1,7 @@
 import { Button } from "frog";
 import { defaultImageOptions } from "../utils/defaultImageOptions";
 import { button, buttonPressed, buttonExploded } from "../images";
-import { app } from "../api";
+import { app } from ".";
 import { getButtonStats, getLeaderboard, getPlayerStats } from "../data";
 import {
   addSeconds,
@@ -11,7 +11,7 @@ import {
 } from "date-fns";
 import { durationToString, secondsToCountdownString } from "../utils";
 import { getUserDataForFid } from "frames.js";
-import { Wrapper } from "../Wrapper";
+import { Wrapper } from "./components/Wrapper";
 
 export const overviewFrame = () => {
   app.frame("/overview", async (c) => {

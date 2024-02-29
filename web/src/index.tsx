@@ -1,10 +1,10 @@
 import { Frog } from "frog";
 import { handle } from "frog/vercel";
-import { homeFrame } from "../screens/Home";
-import { overviewFrame } from "../screens/Overview";
-import { pressFrame } from "../screens/Press";
-import { alreadyPressedFrame } from "../screens/AlreadyPressed";
-import { tooLateFrame } from "../screens/TooLate";
+import { homeFrame } from "./Home";
+import { overviewFrame } from "./Overview";
+import { pressFrame } from "./Press";
+import { alreadyPressedFrame } from "./AlreadyPressed";
+import { tooLateFrame } from "./TooLate";
 
 // Uncomment to use Edge Runtime.
 // export const config = {

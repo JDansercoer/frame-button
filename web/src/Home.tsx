@@ -1,7 +1,7 @@
 import { Button } from "frog";
 import { defaultImageOptions } from "../utils/defaultImageOptions";
-import { app } from "../api";
-import { Wrapper } from "../Wrapper";
+import { app } from ".";
+import { Wrapper } from "./components/Wrapper";
 import { button } from "../images";
 
 export const homeFrame = () => {

@@ -1,11 +1,11 @@
 import { Button } from "frog";
 import { defaultImageOptions } from "../utils/defaultImageOptions";
-import { buttonExploded } from "../images";
-import { app } from "../api";
-import { Wrapper } from "../Wrapper";
+import { buttonPressed } from "../images";
+import { app } from ".";
+import { Wrapper } from "./components/Wrapper";
 
-export const tooLateFrame = () => {
-  app.frame("/too-late", async (c) => {
+export const alreadyPressedFrame = () => {
+  app.frame("/already-pressed", async (c) => {
     return c.res({
       image: (
         <Wrapper>
@@ -14,11 +14,11 @@ export const tooLateFrame = () => {
               tw="mb-16 text-[96px] text-[#23380F]"
               style={{ fontFamily: "VT323" }}
             >
-              DISASTER STRUCK!
+              YOU ARE DONE.
             </span>
-            <img src={buttonExploded} tw="mb-16 w-[400px] h-[272px]" />
+            <img src={buttonPressed} tw="mb-16 w-[400px] h-[272px]" />
             <span tw="mb-6 text-[60px] text-[#839671] leading-[2] text-center">
-              The button has exploded, it can no longer be pressed...
+              You have already pressed the button and it cannot be unpressed...
             </span>
           </div>
         </Wrapper>
