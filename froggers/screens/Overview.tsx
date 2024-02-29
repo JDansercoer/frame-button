@@ -1,6 +1,6 @@
 import { Button } from "frog";
 import { defaultImageOptions } from "../utils/defaultImageOptions";
-import { images } from "../utils/images";
+import { button, buttonPressed, buttonExploded } from "../images";
 import { app } from "../api";
 import { getButtonStats, getLeaderboard, getPlayerStats } from "../data";
 import {
@@ -46,7 +46,7 @@ export const overviewFrame = () => {
           title: "Game Over",
           description:
             "The button has exploded! The fire is largely contained but unfortunately very little of the button remains.",
-          buttonLink: images.buttonExploded,
+          buttonLink: buttonExploded,
         };
       }
 
@@ -56,7 +56,7 @@ export const overviewFrame = () => {
           description: `You did your part and pressed the button with ${secondsToCountdownString(
             playerStats.time_remaining
           )} left to spare. You may rest.`,
-          buttonLink: images.buttonPressed,
+          buttonLink: buttonPressed,
         };
       }
 
@@ -64,7 +64,7 @@ export const overviewFrame = () => {
         title: "Press the button!!!",
         description:
           "If the countdown reaches zero there will be terrible consequences! You only get one press. Use it wisely.",
-        buttonLink: images.button,
+        buttonLink: button,
       };
     })();
 

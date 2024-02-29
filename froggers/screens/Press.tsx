@@ -1,6 +1,6 @@
 import { Button } from "frog";
 import { defaultImageOptions } from "../utils/defaultImageOptions";
-import { images } from "../utils/images";
+import { button } from "../images";
 import { app } from "../api";
 import { Wrapper } from "../Wrapper";
 import { pressButton } from "../data";
@@ -26,7 +26,7 @@ export const pressFrame = () => {
             >
               DISASTER AVERTED!
             </span>
-            <img src={images.button} tw="mb-16 w-[400px] h-[272px]" />
+            <img src={button} tw="mb-16 w-[400px] h-[272px]" />
             <span tw="mb-6 text-[60px] text-[#23380F]">
               You pressed the button at...
             </span>

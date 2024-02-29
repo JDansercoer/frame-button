@@ -1,4 +1,4 @@
-import { images } from "./utils/images";
+import { frame } from "./images";
 
 export const Wrapper = ({ children }: { children: any }) => {
   return (
@@ -6,7 +6,7 @@ export const Wrapper = ({ children }: { children: any }) => {
       <div tw="flex p-24 flex-col justify-center items-center w-full h-full bg-[#E2F3D2]">
         {children}
       </div>
-      <img src={images.frame} tw="absolute inset-0" />
+      <img src={frame} tw="absolute inset-0" />
     </div>
   );
 };
