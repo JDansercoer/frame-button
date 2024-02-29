@@ -5,7 +5,7 @@
   "scripts": {
     "build": "frog vercel-build",
     "dev": "frog dev",
-    "deploy": "vercel"
+    "deploy": "vercel --prod"
   },
   "dependencies": {
     "@dojoengine/core": "^0.5.11-alpha.0",
