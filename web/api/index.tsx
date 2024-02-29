@@ -12,7 +12,7 @@ import { tooLateFrame } from "../screens/TooLate";
 // }
 
 export const app = new Frog({
-  basePath: "/api",
+  basePath: "/",
   // Supply a Hub API URL to enable frame verification.
   // hubApiUrl: 'https://api.hub.wevm.dev',
 });
