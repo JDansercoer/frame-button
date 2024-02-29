@@ -21,7 +21,7 @@ export const homeFrame = () => {
           </div>
         </Wrapper>
       ),
-      intents: [<Button action="/test">Play</Button>],
+      intents: [<Button action="/overview">Play</Button>],
       ...defaultImageOptions,
     });
   });

@@ -80,6 +80,12 @@ export const overviewFrame = () => {
       ]),
     });
 
+    const pressScreen = isGameOver
+      ? "/too-late"
+      : playerStats
+      ? "/already-pressed"
+      : "/press";
+
     return c.res({
       image: (
         <Wrapper>
@@ -153,7 +159,7 @@ export const overviewFrame = () => {
         </Wrapper>
       ),
       intents: [
-        <Button action="/press">Press</Button>,
+        <Button action={pressScreen}>Press</Button>,
         <Button>Refresh</Button>,
       ],
       ...defaultImageOptions,

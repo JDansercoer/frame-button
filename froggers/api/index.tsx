@@ -3,6 +3,8 @@ import { handle } from "frog/vercel";
 import { homeFrame } from "../screens/Home";
 import { overviewFrame } from "../screens/Overview";
 import { pressFrame } from "../screens/Press";
+import { alreadyPressedFrame } from "../screens/AlreadyPressed";
+import { tooLateFrame } from "../screens/TooLate";
 
 // Uncomment to use Edge Runtime.
 // export const config = {
@@ -18,6 +20,8 @@ export const app = new Frog({
 homeFrame();
 overviewFrame();
 pressFrame();
+alreadyPressedFrame();
+tooLateFrame();
 
 export const GET = handle(app);
 export const POST = handle(app);
