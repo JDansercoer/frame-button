@@ -9,7 +9,7 @@ The premise of the game is simple: every user gets 1 button press and as a commu
 ## Technologies used
 
 - [Dojo](https://www.dojoengine.org/en/), a provable game engine and toolchain for building onchain games and autonomous worlds.
-- [frames.js](https://framesjs.org/) starter template
+- [frog](https://frog.fm/) Vercel serverless template
 - [Slot](https://github.com/cartridge-gg/slot), a toolchain for rapidly spinning up Katana and Torii instances.
 
 ## Local Development
