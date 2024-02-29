@@ -47,4 +47,4 @@ Then, also inside `web`, run:
 - `bun install`
 - `bun dev`
 
-Navigate to `http://localhost:3000/debug?url=http%3A%2F%2Flocalhost%3A3000` and you should see the home frame!
+Navigate to `http://localhost:5173/dev` and you should see the home frame!
