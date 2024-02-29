@@ -25,3 +25,9 @@ tooLateFrame();
 
 export const GET = handle(app);
 export const POST = handle(app);
+
+Bun.serve({
+  fetch: app.fetch,
+  port: 3000,
+});
+console.log("Server is running on port 3000");
