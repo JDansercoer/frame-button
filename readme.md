@@ -2,7 +2,7 @@
   <img src="./button.png" />
 </p>
 
-A fully onchain Farcaster Frame game.
+An experimental onchain onframe game for Farcaster.
 
 The premise of the game is simple: every user gets 1 button press and as a community, we need to make sure the button survives as long as possible. Every time someone presses the button, it resets its timer to 60 minutes. If no one presses it in that time, the game is over.
 
@@ -16,7 +16,7 @@ The premise of the game is simple: every user gets 1 button press and as a commu
 
 Want to give this example a try? Clone the repo locally!
 
-[Make sure Dojo is installed](https://book.dojoengine.org/getting-started/quick-start). This repo uses `v0.5.1`, which is latest at the time of writing. If you end up with a later version, be sure to run `dojoup --version 0.5.1`.
+[Make sure Dojo is installed](https://book.dojoengine.org/getting-started/quick-start) (`curl -L https://install.dojoengine.org | bash`). This repo uses `v0.5.1`, which is latest at the time of writing. If you end up with a later version, be sure to run `dojoup --version 0.5.1`.
 
 ### Setting up your local chain
 
