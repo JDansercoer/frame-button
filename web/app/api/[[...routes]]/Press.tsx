@@ -1,10 +1,12 @@
+/** @jsxImportSource frog/jsx */
+
 import { Button } from "frog";
-import { defaultImageOptions } from "../utils/defaultImageOptions";
-import { button } from "../images";
-import { app } from ".";
-import { Wrapper } from "./components/Wrapper";
-import { pressButton } from "../data";
-import { secondsToCountdownString } from "../utils";
+import { defaultImageOptions } from "../../../utils/defaultImageOptions";
+import { button } from "../../../images";
+import { app } from "./frog";
+import { Wrapper } from "./Wrapper";
+import { pressButton } from "../../../data";
+import { secondsToCountdownString } from "../../../utils";
 
 export const pressFrame = () => {
   app.frame("/press", async (c) => {

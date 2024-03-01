@@ -1,8 +1,10 @@
+/** @jsxImportSource frog/jsx */
+
 import { Button } from "frog";
-import { defaultImageOptions } from "../utils/defaultImageOptions";
-import { app } from ".";
-import { Wrapper } from "./components/Wrapper";
-import { button } from "../images";
+import { app } from "./frog";
+import { defaultImageOptions } from "@/utils/defaultImageOptions";
+import { Wrapper } from "./Wrapper";
+import { button } from "@/images";
 
 export const homeFrame = () => {
   app.frame("/", (c) => {

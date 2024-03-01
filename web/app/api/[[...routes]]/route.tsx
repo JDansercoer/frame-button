@@ -1,21 +1,15 @@
-import { Frog } from "frog";
+/** @jsxImportSource frog/jsx */
+
 import { handle } from "frog/vercel";
+import { app } from "./frog";
 import { homeFrame } from "./Home";
 import { overviewFrame } from "./Overview";
 import { pressFrame } from "./Press";
 import { alreadyPressedFrame } from "./AlreadyPressed";
 import { tooLateFrame } from "./TooLate";
 
-// Uncomment to use Edge Runtime.
-// export const config = {
-//   runtime: 'edge',
-// }
-
-export const app = new Frog({
-  basePath: "/api",
-  // Supply a Hub API URL to enable frame verification.
-  // hubApiUrl: 'https://api.hub.wevm.dev',
-});
+// Uncomment to use Edge Runtime
+// export const runtime = 'edge'
 
 homeFrame();
 overviewFrame();

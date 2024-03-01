@@ -1,4 +1,6 @@
-import { frame } from "../../images";
+/** @jsxImportSource frog/jsx */
+
+import { frame } from "../../../images";
 
 export const Wrapper = ({ children }: { children: any }) => {
   return (
